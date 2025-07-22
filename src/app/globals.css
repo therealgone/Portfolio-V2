@@ -1,6 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lexend+Tera:wght@400;500;600&display=swap");
 @import "tailwindcss";
 
-:root{
-  @apply bg-black
+:root {
+  @apply bg-black text-white;
+}
 
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.font-inter {
+  font-family: "Inter", sans-serif;
+}
+.font-lexend {
+  font-family: "Lexend Tera", sans-serif;
 }

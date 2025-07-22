@@ -4,7 +4,7 @@ export default function about() {
     return (
 
         <div>
-            <h1 className=" text-white">jeevan</h1>
+            <h1 className=" text-white">About</h1>
         </div>
     )
 }
