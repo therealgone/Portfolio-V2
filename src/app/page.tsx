@@ -23,7 +23,7 @@ export default function Home() {
     const section = [
       {id:"Home",ref:HeroRef}, 
       {id:"About",ref:AboutRef},
-      {id:"Tech",ref:TechRef},
+      {id:"Tech-Stack",ref:TechRef},
       {id:"Project",ref:ProjectRef},
       {id:"Contact",ref:ContactRef},
     ];
@@ -78,7 +78,7 @@ export default function Home() {
 
 
 
-    <main>
+    <main className="scroll-smooth">
       <Navbar active={active} />
       <section ref={HeroRef} className="min-h-screen">
         <Hero></Hero>
