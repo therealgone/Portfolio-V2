@@ -80,7 +80,7 @@ export default function Home() {
 
     <main className="scroll-smooth">
       <Navbar active={active} />
-      <section ref={HeroRef} className="min-h-screen">
+      <section ref={HeroRef}  className="min-h-screen">
         <Hero></Hero>
       </section>
       <section ref={AboutRef} className="min-h-screen">

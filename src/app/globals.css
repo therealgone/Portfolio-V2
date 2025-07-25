@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 :root {
-  @apply bg-black text-white;
+  @apply bg-black text-white ;
 }
 
 html {
@@ -15,4 +15,23 @@ html {
 }
 .font-lexend {
   font-family: "Lexend Tera", sans-serif;
+}
+
+
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+  
+}
+
+@keyframes border-rotate {
+  to {
+    --border-angle: 360deg;
+    
+  }
+}
+
+.animate-rotate-border {
+ animation: border-rotate 5s linear infinite;
 }
