@@ -69,11 +69,11 @@ export default function Navbar({ active }: NavbarProps) {
   return (
     <>
       <FPSCounter />
-      <div className='flex sticky top-0 z-[9999] justify-center py-9'>
+      <div className=' gpu-boost flex sticky top-0 z-[9999] justify-center py-9'>
 
         {navScrolled ? (
           <motion.div
-            className="animate-rotate-border fixed rounded-full p-px bg-conic/[from_var(--border-angle)] from-black via-cyan-400 to-black shadow-xl"
+            className="gpu-boost animate-rotate-border fixed rounded-full p-px bg-conic/[from_var(--border-angle)] from-black via-cyan-400 to-black shadow-xl"
             layout
             initial={{ opacity: 0, scale: 0.8, y: -20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -103,7 +103,7 @@ export default function Navbar({ active }: NavbarProps) {
         ) : (
           open ? (
             <motion.div
-              className="animate-rotate-border fixed rounded-3xl p-px bg-conic/[from_var(--border-angle)] from-black via-cyan-400 to-black shadow-xl "
+              className="gpu-boost animate-rotate-border fixed rounded-3xl p-px bg-conic/[from_var(--border-angle)] from-black via-cyan-400 to-black shadow-xl "
               layout
               initial={{ opacity: 0, scale: 0.9, y: -10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -114,22 +114,8 @@ export default function Navbar({ active }: NavbarProps) {
                 damping: 30,
                 mass: 0.5,
               }}
-              whileTap={{
-                scale: 0.97, transition: {
-                  type: "spring",
-                  stiffness: 500,
-                  damping: 30,
-                  mass: 0.5,
-                }
-              }}
-              whileHover={{
-                scale: 1.03, transition: {
-                  type: "spring",
-                  stiffness: 500,
-                  damping: 30,
-                  mass: 0.5,
-                }
-              }}
+              whileTap={{ scale: 0.97, transition: { type: "spring", stiffness: 500, damping: 30, mass: 0.5 } }}
+              whileHover={{ scale: 1.03, transition: { type: "spring", stiffness: 500, damping: 30, mass: 0.5 } }}
               onClick={() => setOpen(!open)}
             >
               <div className="py-5 px-6 bg-[#0f172a]/80 backdrop-blur-md border border-cyan-500/30 shadow-xl rounded-3xl">
@@ -153,7 +139,7 @@ export default function Navbar({ active }: NavbarProps) {
             </motion.div>
           ) : (
             <motion.div
-              className="animate-rotate-border fixed rounded-full p-px bg-conic/[from_var(--border-angle)] from-black via-cyan-400 to-black shadow-lg"
+              className="gpu-boost animate-rotate-border fixed rounded-full p-px bg-conic/[from_var(--border-angle)] from-black via-cyan-400 to-black shadow-lg"
               layout
               initial={{ opacity: 0, scale: 0.85, y: -10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
