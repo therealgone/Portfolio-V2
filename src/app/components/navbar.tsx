@@ -79,11 +79,11 @@ export default function Navbar({ active }: NavbarProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: -20 }}
             transition={{
-  type: "spring",
-  stiffness: 500,
-  damping: 30,
-  mass: 0.5,
-}}
+              type: "spring",
+              stiffness: 500,
+              damping: 30,
+              mass: 0.5,
+            }}
             whileTap={{ scale: 0.97, transition: { type: "tween", duration: 0.2, ease: "easeInOut" } }}
             whileHover={{ scale: 1.03, transition: { type: "tween", duration: 0.2, ease: "easeInOut" } }}
           >
@@ -109,19 +109,27 @@ export default function Navbar({ active }: NavbarProps) {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: -10 }}
               transition={{
-  type: "spring",
-  stiffness: 500,
-  damping: 30,
-  mass: 0.5,
-}}
-              whileTap={{ scale: 0.97, transition: { type: "spring",
-  stiffness: 500,
-  damping: 30,
-  mass: 0.5, } }}
-              whileHover={{ scale: 1.03, transition: { type: "spring",
-  stiffness: 500,
-  damping: 30,
-  mass: 0.5, } }}
+                type: "spring",
+                stiffness: 500,
+                damping: 30,
+                mass: 0.5,
+              }}
+              whileTap={{
+                scale: 0.97, transition: {
+                  type: "spring",
+                  stiffness: 500,
+                  damping: 30,
+                  mass: 0.5,
+                }
+              }}
+              whileHover={{
+                scale: 1.03, transition: {
+                  type: "spring",
+                  stiffness: 500,
+                  damping: 30,
+                  mass: 0.5,
+                }
+              }}
               onClick={() => setOpen(!open)}
             >
               <div className="py-5 px-6 bg-[#0f172a]/80 backdrop-blur-md border border-cyan-500/30 shadow-xl rounded-3xl">
@@ -151,11 +159,11 @@ export default function Navbar({ active }: NavbarProps) {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.85, y: -10 }}
               transition={{
-  type: "spring",
-  stiffness: 500,
-  damping: 30,
-  mass: 0.5,
-}}
+                type: "spring",
+                stiffness: 500,
+                damping: 30,
+                mass: 0.5,
+              }}
               whileTap={{ scale: 0.97, transition: { type: "tween", duration: 0.2, ease: "easeInOut" } }}
               whileHover={{ scale: 1.03, transition: { type: "tween", duration: 0.2, ease: "easeInOut" } }}
               onClick={() => setOpen(!open)}
