@@ -1,10 +1,14 @@
+'use client';
 
 
-export default function about() {
-    return (
+export default function About() {
 
-        <div>
-            <h1 className=" text-white">About</h1>
-        </div>
-    )
+  
+
+  return (
+   <div>
+  <h1>about</h1>
+   </div>
+      
+  );
 }

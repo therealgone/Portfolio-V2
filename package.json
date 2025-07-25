@@ -15,7 +15,9 @@
     "next": "^15.4.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "stats.js": "^0.17.0"
+    "react-intersection-observer": "^9.16.0",
+    "stats.js": "^0.17.0",
+    "tw-animate-css": "^1.3.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

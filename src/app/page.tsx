@@ -55,7 +55,7 @@ export default function Home() {
 
 
       },
-      { threshold: 0.6}
+      { threshold: 0.5}
     );
     section.forEach(({ref}) => {
       if (ref.current) obs.observe(ref.current);
@@ -93,7 +93,7 @@ export default function Home() {
         <Project></Project>
       </section>
       <section ref={ContactRef} className="min-h-screen">
-        <Contact></Contact>
+        <Contact active={active}></Contact>
       </section>
     </main>
   );
