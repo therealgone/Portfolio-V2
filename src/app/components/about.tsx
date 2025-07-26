@@ -1,5 +1,5 @@
 'use client';
-
+import { motion} from 'framer-motion';
 
 export default function About() {
 
@@ -7,7 +7,9 @@ export default function About() {
 
   return (
    <div className="max-h-screen">
-  <h1>about</h1>
+   <motion.div>
+    
+   </motion.div>
    </div>
       
   );

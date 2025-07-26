@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, scale, spring } from 'framer-motion';
+import { motion} from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 // FPS Counter Component
@@ -118,10 +118,10 @@ export default function Navbar({ active }: NavbarProps) {
               whileHover={{ scale: 1.03, transition: { type: "spring", stiffness: 500, damping: 30, mass: 0.5 } }}
               onClick={() => setOpen(!open)}
             >
-              <div className="py-5 px-6 bg-[#0f172a]/80 backdrop-blur-md border border-cyan-500/30 shadow-xl rounded-3xl">
+              <div className="py-5 px-6 bg-[#0f172a]/80 backdrop-blur-md border border-cyan-500/30 shadow-xl rounded-3xl ">
                 <ul className='flex flex-col items-center gap-4 font-inter tracking-wider text-white mb-5 text-sm'>
-                  <li className="flex items-center">
-                    <span className='w-3 h-3 mr-4 bg-cyan-400/80   drop-shadow-[0_0_6px_cyan] rounded-full'></span>
+                  <li className="flex items-center ">
+                    <span className='w-3 h-3 mr-4 bg-cyan-400/80  drop-shadow-[0_0_6px_cyan] rounded-full'></span>
                     <a>{active}</a>
                   </li>
                 </ul>

@@ -4,7 +4,7 @@ import React, { useRef, useEffect, useState } from "react";
 
 const NEON_CYAN = "#67e8f9"; // bright neon cyan
 const NEON_CORE = "#e0f7fa"; // white-blue core for extra brightness
-const MIN_TRAIL_POINTS = 4; // Shorter minimum trail
+const MIN_TRAIL_POINTS = 5; // Shorter minimum trail
 
 interface Props {
   color?: string;
