@@ -5,8 +5,10 @@ import About from "./components/about"
 import Tech from "./components/tech-stack"
 import Project from "./components/project"
 import Contact from "./components/contact"
+import ElectricCursor from "./components/electric-cursor";
 
 import { useState, useEffect, useRef } from "react";
+
 
 
 export default function Home() {
@@ -79,12 +81,22 @@ export default function Home() {
 
 
     <main className="scroll-smooth">
+       <>
+      
+      <ElectricCursor></ElectricCursor>
+    </>
+      
+      
       <Navbar active={active} />
       <section ref={HeroRef}  className="min-h-screen">
         <Hero></Hero>
       </section>
       <section ref={AboutRef} className="min-h-screen">
-        <About></About>
+        
+        <About>
+         
+        </About>
+         
       </section>
       <section ref={TechRef} className="min-h-screen">
         <Tech></Tech>

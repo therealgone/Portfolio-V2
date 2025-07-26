@@ -8,6 +8,11 @@
 html {
   scroll-behavior: smooth;
   scrollbar-width: none;
+ 
+}
+
+* {
+  cursor: none ;
 }
 
 .font-inter {
