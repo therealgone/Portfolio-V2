@@ -18,61 +18,44 @@ export default function Home() {
   const ProjectRef = useRef(null);
   const ContactRef = useRef(null);
 
-  const [active,setActive] = useState("")
+  const [active, setActive] = useState("")
 
-  useEffect ( () => {
-
+  useEffect(() => {
     const section = [
-      {id:"Home",ref:HeroRef}, 
-      {id:"About",ref:AboutRef},
-      {id:"Tech-Stack",ref:TechRef},
-      {id:"Project",ref:ProjectRef},
-      {id:"Contact",ref:ContactRef},
+      { id: "Home", ref: HeroRef },
+      { id: "About", ref: AboutRef },
+      { id: "Tech-Stack", ref: TechRef },
+      { id: "Project", ref: ProjectRef },
+      { id: "Contact", ref: ContactRef },
     ];
 
-    
-     
-    const obs = new IntersectionObserver (
-
-      (dom) => { dom.forEach((view) =>{
-
-        if (view.isIntersecting)
-        {
-          const page= section.find(sec => sec.ref.current === view.target)
-
-          
-          if(page)
-          {
-            setActive(page.id)
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const page = section.find(sec => sec.ref.current === entry.target);
+            if (page) {
+              setActive(page.id);
+            }
           }
-        }
-
-
-
-      });
-
-
-
-
-
-
+        });
       },
-      { threshold: 0.5}
+      { threshold: 0.3, rootMargin: '-10% 0px -10% 0px' }
     );
-    section.forEach(({ref}) => {
-      if (ref.current) obs.observe(ref.current);
-    
-    })
+
+    section.forEach(({ ref }) => {
+      if (ref.current) {
+        obs.observe(ref.current);
+      }
+    });
 
     return () => {
-      section.forEach(({ref}) => {
-        if(ref.current) obs.observe(ref.current);
+      section.forEach(({ ref }) => {
+        if (ref.current) {
+          obs.unobserve(ref.current);
+        }
       });
     };
-
-
-
-
   }, []);
 
 
@@ -81,22 +64,18 @@ export default function Home() {
 
 
     <main className="scroll-smooth">
-       <>
-      
-      <ElectricCursor></ElectricCursor>
-    </>
-      
-      
+      <>
+
+        <ElectricCursor></ElectricCursor>
+      </>
+
+
       <Navbar active={active} />
-      <section ref={HeroRef}  className="min-h-screen">
+      <section ref={HeroRef} className="min-h-screen">
         <Hero></Hero>
       </section>
       <section ref={AboutRef} className="min-h-screen">
-        
-        <About>
-         
-        </About>
-         
+        <About></About>
       </section>
       <section ref={TechRef} className="min-h-screen">
         <Tech></Tech>
