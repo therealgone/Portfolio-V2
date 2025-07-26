@@ -90,7 +90,7 @@ export default function Navbar({ active }: NavbarProps) {
             <div className='bg-[#0f172a]/80 backdrop-blur-md border border-cyan-500/30 shadow-2xl rounded-full px-6 py-3'>
               <ul className='flex items-center space-x-6 font-inter tracking-wider text-white text-sm'>
                 <li className="flex items-center">
-                  <span className='w-3 h-3 bg-cyan-400/80 border-2 border-white drop-shadow-[0_0_6px_cyan] rounded-full'></span>
+                  <span className='w-3 h-3 bg-cyan-400/80   drop-shadow-[0_0_6px_cyan] rounded-full'></span>
                 </li>
                 {section.map((sec) => (
                   <li key={sec.name}>
@@ -121,7 +121,7 @@ export default function Navbar({ active }: NavbarProps) {
               <div className="py-5 px-6 bg-[#0f172a]/80 backdrop-blur-md border border-cyan-500/30 shadow-xl rounded-3xl">
                 <ul className='flex flex-col items-center gap-4 font-inter tracking-wider text-white mb-5 text-sm'>
                   <li className="flex items-center">
-                    <span className='w-3 h-3 mr-4 bg-cyan-400/80 border-2 border-white drop-shadow-[0_0_6px_cyan] rounded-full'></span>
+                    <span className='w-3 h-3 mr-4 bg-cyan-400/80   drop-shadow-[0_0_6px_cyan] rounded-full'></span>
                     <a>{active}</a>
                   </li>
                 </ul>
@@ -157,7 +157,7 @@ export default function Navbar({ active }: NavbarProps) {
               <div className="px-6 py-3 bg-[#0f172a]/80 backdrop-blur-md border border-cyan-400/30 shadow-lg rounded-full text-white">
                 <ul className="flex items-center space-x-6 font-inter tracking-wider text-sm">
                   <li className="flex items-center">
-                    <span className="w-3 h-3 bg-cyan-400 border-2 border-white drop-shadow-[0_0_6px_cyan] rounded-full"></span>
+                    <span className="w-3 h-3 bg-cyan-400   drop-shadow-[0_0_6px_cyan] rounded-full"></span>
                   </li>
                   <li>
                     <a>{active}</a>
