@@ -27,6 +27,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+
+     
+         <link
+         rel='preload'
+         as='fetch'
+          href="https://prod.spline.design/i7gHz8QTyTOZe0Wz/scene.splinecode"
+          crossOrigin='anonymous'
+         />
+      
       <body
         className={`${inter.variable} ${lexend.variable}`}
       >

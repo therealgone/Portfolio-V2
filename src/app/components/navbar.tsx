@@ -26,14 +26,14 @@ function FPSCounter() {
   // FPS counter should always be visible, so remove the NODE_ENV check
   return (
     <motion.div
-      className="animate-rotate-border fixed top-4 right-6 z-[99999] rounded-full p-px bg-conic/[from_var(--border-angle)] from-black via-cyan-400 to-black shadow-xl"
+      className="  gpu-boost animate-rotate-border fixed top-4 right-6 z-[99999] rounded-full p-px bg-conic/[from_var(--border-angle)] from-black via-cyan-400 to-black shadow-xl"
       initial={{ opacity: 0, scale: 0.8, y: -10 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.8, y: -10 }}
       transition={{ type: 'tween', duration: 0.5, ease: 'easeInOut' }}
       style={{ pointerEvents: 'none', userSelect: 'none' }}
     >
-      <div className="bg-[#0f172a]/80 backdrop-blur-md border border-cyan-400/30 shadow-lg rounded-full px-4 py-1 text-white font-mono text-xs flex items-center justify-center min-w-[60px]">
+      <div className="  gpu-boost bg-[#0f172a]/80 backdrop-blur-md border border-cyan-400/30 shadow-lg rounded-full px-4 py-1 text-white font-mono text-xs flex items-center justify-center min-w-[60px]">
         FPS: {fps}
       </div>
     </motion.div>

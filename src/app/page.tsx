@@ -40,6 +40,10 @@ export default function Home() {
   const [active, setActive] = useState("")
 
   useEffect(() => {
+     if ('scrollRestoration' in window.history) {
+    window.history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
     const section = [
       { id: "Home", ref: HeroRef },
       { id: "About", ref: AboutRef },
@@ -91,7 +95,7 @@ export default function Home() {
 
       <Navbar active={active} />
       <section ref={HeroRef} className="min-h-screen">
-        <Hero></Hero>
+        <Hero ></Hero>
       </section>
       <section ref={AboutRef} className="min-h-screen">
         <About active={active}></About>
