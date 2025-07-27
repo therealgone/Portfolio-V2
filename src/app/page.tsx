@@ -1,13 +1,31 @@
 'use client';
 import Navbar from "./components/navbar"
 import Hero from "./components/Hero_Page"
-import About from "./components/about"
-import Tech from "./components/tech-stack"
-import Project from "./components/project"
-import Contact from "./components/contact"
 import ElectricCursor from "./components/electric-cursor";
+import dynamic from 'next/dynamic';
 
 import { useState, useEffect, useRef } from "react";
+
+ const About = dynamic(()=> import('./components/about') , {
+  ssr:false,
+ })
+
+ const Tech = dynamic(() => import ('./components/tech-stack'), {
+
+  ssr:false,
+ })
+
+ const Project = dynamic(() => import ('./components/project'), {
+
+  ssr:false,
+ })
+
+ const Contact = dynamic(() => import ('./components/contact'), {
+
+  ssr:false,
+ })
+
+
 
 
 
@@ -17,6 +35,7 @@ export default function Home() {
   const TechRef = useRef(null);
   const ProjectRef = useRef(null);
   const ContactRef = useRef(null);
+
 
   const [active, setActive] = useState("")
 
@@ -75,13 +94,13 @@ export default function Home() {
         <Hero></Hero>
       </section>
       <section ref={AboutRef} className="min-h-screen">
-        <About></About>
+        <About active={active}></About>
       </section>
       <section ref={TechRef} className="min-h-screen">
-        <Tech></Tech>
+        <Tech active={active}></Tech>
       </section>
       <section ref={ProjectRef} className="min-h-screen">
-        <Project></Project>
+        <Project active={active} ></Project>
       </section>
       <section ref={ContactRef} className="min-h-screen">
         <Contact active={active}></Contact>

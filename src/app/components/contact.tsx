@@ -18,11 +18,11 @@ export default function Contact({active}: NavbarProps) {
  const  [load,setLoad] = useState(false)
 
  useEffect(()=> {
-    if (active =="Tech-Stack")
+    if (active =="Project")
     {
         setLoad(true)
     }
- }, [active])
+ }, [active])                                                                 
 
     
  

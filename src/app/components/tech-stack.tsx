@@ -1,13 +1,28 @@
 'use client';
 import { motion } from 'framer-motion';
-import { GlowCard } from "./spotlight-card";
-import { useState } from 'react';
+
+import { useEffect, useState } from 'react';
 import { easeInOut } from 'framer-motion';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
+
+ const GlowCard = dynamic(() => import('./spotlight-card') , {
+        ssr: false,
+    } );
+
+  
 
 
-export default function tech() {
+type navprop ={
+    active:string;
+}
 
+export default function Tech({active}:navprop) {
+
+   
+
+  
+    const [show,setShow] =useState(false)
 
 const motionProps90 = {  initial: { opacity: 0, y: 90 },
   whileInView: { opacity: 1, y: 0 },
@@ -17,10 +32,20 @@ const motionProps90 = {  initial: { opacity: 0, y: 90 },
 
 
 
+useEffect(()=> {
+
+    if(active == "About")
+    {
+        setShow(true)
+    }
+   
+}, [active])
+
 
 
     return (
         <div className='min-h-screen py-20'>
+        {show && ( <>
             <h1>Tech</h1>
             <div className=' '>
 
@@ -300,6 +325,8 @@ const motionProps90 = {  initial: { opacity: 0, y: 90 },
 
                 </motion.div>
             </div>
+             </>)}
         </div>
+       
     )
 }
