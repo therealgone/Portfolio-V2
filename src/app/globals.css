@@ -2,7 +2,8 @@
 @import "tailwindcss";
 
 :root {
-  @apply bg-black text-white ;
+  background-color: black  ;
+  
 }
 
 html {
@@ -31,17 +32,19 @@ html {
   inherits: false;
   initial-value: 0deg;
   
+  
 }
 
 @keyframes border-rotate {
   to {
     --border-angle: 360deg;
     
+    
   }
 }
 
 .animate-rotate-border {
- animation: border-rotate 5s linear infinite;
+ animation: border-rotate 3s linear infinite ;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

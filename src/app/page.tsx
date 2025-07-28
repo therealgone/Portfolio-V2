@@ -86,7 +86,7 @@ export default function Home() {
 
 
 
-    <main className="scroll-smooth">
+    <main className="scroll-smooth text-white">
       <>
 
         <ElectricCursor></ElectricCursor>
