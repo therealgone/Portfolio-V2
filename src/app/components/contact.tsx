@@ -3,25 +3,17 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-const motionProps90 = {
-  initial: { opacity: 0, y: 90 },
-  whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 0.8, ease: [0.42, 0, 0.58, 1] },
-  viewport: { once: true }
-};
-
-
 type nav = {
-  active : string;
+  active: string;
 }
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const res = await fetch("https://formspree.io/f/xeokobav", {
       method: "POST",
@@ -40,7 +32,10 @@ export default function Contact() {
     <div className="min-h-screen flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 py-20">
       <motion.h1
         className="text-5xl md:text-7xl font-bold text-white mb-10 text-center"
-        {...motionProps90}
+        initial={{ opacity: 0, y: 90 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeInOut" }}
+        viewport={{ once: true }}
       >
         Contact
       </motion.h1>
@@ -52,7 +47,12 @@ export default function Contact() {
         onSubmit={handleSubmit}
         className="w-full max-w-[700px]  font-mono tracking-wide p-6 md:p-10 rounded-3xl shadow-xl flex flex-col gap-6"
       >
-        <motion.div {...motionProps90}>
+        <motion.div
+          initial={{ opacity: 0, y: 90 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          viewport={{ once: true }}
+        >
           <input
             type="text"
             name="name"
@@ -63,7 +63,12 @@ export default function Contact() {
             className="w-full p-4 rounded-xl bg-zinc-950 text-white placeholder-zinc-400 border border-zinc-700/30 focus:border-zinc-500 focus:drop-shadow-[0_0_4px_white] focus:ring-2 focus:ring-zinc-500/30 outline-none transition mb-2"
           />
         </motion.div>
-        <motion.div {...motionProps90}>
+        <motion.div
+          initial={{ opacity: 0, y: 90 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          viewport={{ once: true }}
+        >
           <input
             type="email"
             name="email"
@@ -74,7 +79,12 @@ export default function Contact() {
             className="w-full p-4 rounded-xl bg-zinc-950 text-white placeholder-zinc-400 border border-zinc-700/30 focus:border-zinc-500 focus:ring-2 focus:drop-shadow-[0_0_4px_white] focus:ring-zinc-500/30 outline-none transition mb-2"
           />
         </motion.div>
-        <motion.div {...motionProps90}>
+        <motion.div
+          initial={{ opacity: 0, y: 90 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          viewport={{ once: true }}
+        >
           <textarea
             name="message"
             value={formData.message}
