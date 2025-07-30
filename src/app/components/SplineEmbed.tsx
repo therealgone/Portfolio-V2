@@ -1,24 +1,16 @@
 "use client"
 
-import { motion, easeInOut } from "framer-motion"
-import { useInView } from "react-intersection-observer"
 import { useEffect, useRef, useState } from "react"
 
-export default function HeroPage() {
-  const { ref: viewRef, inView } = useInView({
-    threshold: 0.1,
-  })
+interface SplineEmbedProps {
+  url: string
+  className?: string
+}
 
+export function SplineEmbed({ url, className = "" }: SplineEmbedProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [hasError, setHasError] = useState(false)
-
-  const motionProps90 = {
-    initial: { opacity: 0, y: 90 },
-    whileInView: { opacity: 1, y: 0 },
-    transition: { duration: 0.8, ease: easeInOut },
-    viewport: { once: true },
-  }
 
   useEffect(() => {
     if (!containerRef.current) return
@@ -49,7 +41,7 @@ export default function HeroPage() {
 
         // Create viewer element
         viewer = document.createElement("spline-viewer")
-        viewer.setAttribute("url", "https://prod.spline.design/i7gHz8QTyTOZe0Wz/scene.splinecode")
+        viewer.setAttribute("url", url)
         viewer.setAttribute("loading-anim-type", "spinner-big-dark")
 
         // Add event listeners
@@ -82,59 +74,54 @@ export default function HeroPage() {
         document.head.removeChild(script)
       }
     }
-  }, [])
+  }, [url])
 
   const handleRetry = () => {
     if (containerRef.current) {
       containerRef.current.innerHTML = ""
       setIsLoading(true)
       setHasError(false)
-      // Re-trigger the effect by changing a state
-      window.location.reload()
+      // Re-trigger the effect
+      const container = containerRef.current
+      const event = new CustomEvent("retry")
+      container.dispatchEvent(event)
     }
   }
 
   return (
-    <main ref={viewRef} className="relative h-screen w-full overflow-hidden">
-      <motion.div layout {...motionProps90} className="relative w-full h-full">
-        {/* Loading State */}
-        {isLoading && (
-          <div className="absolute inset-0 z-10 flex items-center justify-center bg-white">
-            <div className="text-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto mb-4"></div>
-              <p className="text-gray-600">Loading 3D Scene...</p>
-            </div>
+    <div className={`relative w-full h-full ${className}`} style={{ minHeight: "400px" }}>
+      {/* Loading State */}
+      {isLoading && (
+        <div className="absolute inset-0 z-10 flex items-center justify-center bg-white">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto mb-4"></div>
+            <p className="text-gray-600">Loading 3D Scene...</p>
           </div>
-        )}
-
-        {/* Error State */}
-        {hasError && (
-          <div className="absolute inset-0 z-10 flex items-center justify-center bg-gray-100">
-            <div className="text-center">
-              <p className="text-gray-600 mb-4">Failed to load 3D scene</p>
-              <button onClick={handleRetry} className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-                Retry
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* Spline Container */}
-        <div
-          ref={containerRef}
-          className="absolute inset-0 w-full h-full"
-          style={{
-            pointerEvents: isLoading || hasError ? "none" : "auto",
-            opacity: isLoading || hasError ? 0 : 1,
-            transition: "opacity 0.3s ease-in-out",
-          }}
-        />
-
-        {/* Bottom Right Overlay */}
-        <div className="absolute bottom-5 right-5 z-[9999] bg-black w-[140px] h-[50px] rounded">
-          {/* Add your content here */}
         </div>
-      </motion.div>
-    </main>
+      )}
+
+      {/* Error State */}
+      {hasError && (
+        <div className="absolute inset-0 z-10 flex items-center justify-center bg-gray-100">
+          <div className="text-center">
+            <p className="text-gray-600 mb-4">Failed to load 3D scene</p>
+            <button onClick={handleRetry} className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+              Retry
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Spline Container */}
+      <div
+        ref={containerRef}
+        className="w-full h-full"
+        style={{
+          pointerEvents: isLoading || hasError ? "none" : "auto",
+          opacity: isLoading || hasError ? 0 : 1,
+          transition: "opacity 0.3s ease-in-out",
+        }}
+      />
+    </div>
   )
 }

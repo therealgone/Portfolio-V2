@@ -1,6 +1,4 @@
 /** @type {import('next').NextConfig} */
-import type { Configuration as WebpackConfig } from "webpack"
-
 const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
@@ -26,11 +24,6 @@ const nextConfig = {
         ],
       },
     ]
-  },
-
-  webpack: (config: WebpackConfig) => {
-    // Remove problematic externals configuration for Spline
-    return config
   },
 }
 
