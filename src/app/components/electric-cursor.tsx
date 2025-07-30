@@ -2,25 +2,26 @@
 
 import React, { useRef, useEffect, useState } from "react";
 
-const NEON_CYAN = "#67e8f9"; // bright neon cyan
-const NEON_CORE = "#e0f7fa"; // white-blue core for extra brightness
-const MIN_TRAIL_POINTS = 5; // Shorter minimum trail
+const NEON_WHITE = "#ffffff"; // bright white
+const NEON_CYAN = "#ffffff";  // bright cyan outer glow
+const NEON_CORE = "#ffffff";  // zinc-100 core
+const MIN_TRAIL_POINTS = 5;
 
 interface Props {
   color?: string;
-  trailLength?: number; // ms
-  thickness?: number; // px
-  smoothness?: number; // px, distance between points
+  trailLength?: number;
+  thickness?: number;
+  smoothness?: number;
 }
 
-const POINTER_SIZE = 6; // px
-const POINTER_BORDER = 3; // px
+const POINTER_SIZE = 6;
+const POINTER_BORDER = 3;
 
 const TronCursor: React.FC<Props> = ({
-  color = NEON_CYAN,
-  trailLength = 100, // ms, shorter trail
-  thickness = 5, // px
-  smoothness = 5, // px
+  color = NEON_CYAN,         // use cyan for the trail by default
+  trailLength = 100,
+  thickness = 5,
+  smoothness = 5,
 }) => {
   const points = useRef<{ x: number; y: number; time: number }[]>([]);
   const svgRef = useRef<SVGSVGElement | null>(null);
@@ -32,7 +33,6 @@ const TronCursor: React.FC<Props> = ({
 
   useEffect(() => {
     const svgNS = "http://www.w3.org/2000/svg";
-    // Create SVG
     const svg = document.createElementNS(svgNS, "svg");
     svg.style.position = "fixed";
     svg.style.top = "0";
@@ -44,7 +44,6 @@ const TronCursor: React.FC<Props> = ({
     document.body.appendChild(svg);
     svgRef.current = svg;
 
-    // Add SVG filter for strong neon glow
     const defs = document.createElementNS(svgNS, "defs");
     const filter = document.createElementNS(svgNS, "filter");
     filter.setAttribute("id", "neon-glow");
@@ -52,11 +51,12 @@ const TronCursor: React.FC<Props> = ({
     filter.setAttribute("y", "-100%");
     filter.setAttribute("width", "300%");
     filter.setAttribute("height", "300%");
-    // Even stronger blur for neon
+
     const feGaussian = document.createElementNS(svgNS, "feGaussianBlur");
     feGaussian.setAttribute("stdDeviation", "18");
     feGaussian.setAttribute("result", "blur");
     filter.appendChild(feGaussian);
+
     const feMerge = document.createElementNS(svgNS, "feMerge");
     const feMergeNode1 = document.createElementNS(svgNS, "feMergeNode");
     feMergeNode1.setAttribute("in", "blur");
@@ -67,7 +67,6 @@ const TronCursor: React.FC<Props> = ({
     filter.appendChild(feMerge);
     defs.appendChild(filter);
 
-    // Add linear gradient for fading effect
     const grad = document.createElementNS(svgNS, "linearGradient");
     grad.setAttribute("id", gradientId.current);
     grad.setAttribute("x1", "0");
@@ -82,7 +81,6 @@ const TronCursor: React.FC<Props> = ({
     defs.appendChild(grad);
     svg.appendChild(defs);
 
-    // Neon outer path
     const path = document.createElementNS(svgNS, "path");
     path.setAttribute("stroke", `url(#${gradientId.current})`);
     path.setAttribute("stroke-width", `${thickness}`);
@@ -90,22 +88,20 @@ const TronCursor: React.FC<Props> = ({
     path.setAttribute("stroke-linecap", "round");
     path.setAttribute("stroke-linejoin", "round");
     path.setAttribute("filter", "url(#neon-glow)");
-    path.setAttribute("opacity", "1"); // Always fully visible
+    path.setAttribute("opacity", "1");
     svg.appendChild(path);
     pathRef.current = path;
 
-    // Neon core (white/blue, no filter, thinner)
     const corePath = document.createElementNS(svgNS, "path");
     corePath.setAttribute("stroke", NEON_CORE);
     corePath.setAttribute("stroke-width", `${Math.max(1, thickness * 0.45)}`);
     corePath.setAttribute("fill", "none");
     corePath.setAttribute("stroke-linecap", "round");
     corePath.setAttribute("stroke-linejoin", "round");
-    corePath.setAttribute("opacity", "1"); // Always fully visible
+    corePath.setAttribute("opacity", "1");
     svg.appendChild(corePath);
     corePathRef.current = corePath;
 
-    // Resize handler
     const resizeSvg = () => {
       svg.setAttribute("width", window.innerWidth.toString());
       svg.setAttribute("height", window.innerHeight.toString());
@@ -113,7 +109,6 @@ const TronCursor: React.FC<Props> = ({
     resizeSvg();
     window.addEventListener("resize", resizeSvg);
 
-    // Mouse move handler
     let lastPoint: { x: number; y: number } | null = null;
     const onMouseMove = (e: MouseEvent) => {
       const x = e.clientX;
@@ -124,25 +119,20 @@ const TronCursor: React.FC<Props> = ({
         points.current.push({ x, y, time: now });
         lastPoint = { x, y };
       } else {
-        // Replace last point for smoother path
         points.current[points.current.length - 1] = { x, y, time: now };
       }
     };
     window.addEventListener("mousemove", onMouseMove);
 
-    // Animation loop to update path and fade
     const animate = () => {
       const now = performance.now();
-      // Remove old points
       points.current = points.current.filter(p => now - p.time < trailLength);
-      // Always show at least MIN_TRAIL_POINTS by repeating the last mouse position
       if (points.current.length > 0 && points.current.length < MIN_TRAIL_POINTS) {
         const last = points.current[points.current.length - 1];
         for (let i = points.current.length; i < MIN_TRAIL_POINTS; ++i) {
           points.current.push({ x: last.x, y: last.y, time: now - (MIN_TRAIL_POINTS - i) * 8 });
         }
       }
-      // Build SVG path
       if (points.current.length > 1) {
         let d = `M${points.current[0].x},${points.current[0].y}`;
         for (let i = 1; i < points.current.length; ++i) {
@@ -150,8 +140,6 @@ const TronCursor: React.FC<Props> = ({
         }
         path.setAttribute("d", d);
         corePath.setAttribute("d", d);
-        path.setAttribute("opacity", `1`);
-        corePath.setAttribute("opacity", `1`);
       } else {
         path.setAttribute("d", "");
         corePath.setAttribute("d", "");
@@ -168,7 +156,6 @@ const TronCursor: React.FC<Props> = ({
     };
   }, [color, trailLength, thickness, smoothness]);
 
-  // Render the neon pointer dot at the head of the trail
   return (
     <>
       <div className="relative overflow-hidden">
@@ -189,9 +176,9 @@ const TronCursor: React.FC<Props> = ({
                 width: POINTER_SIZE,
                 height: POINTER_SIZE,
                 borderRadius: '50%',
-                background: '#fff',
+                background: NEON_WHITE,
                 border: `${POINTER_BORDER}px solid ${NEON_CYAN}`,
-                boxShadow: `0 0 16px 4px ${NEON_CYAN}, 0 0 2px 1px #fff`,
+                boxShadow: `0 0 16px 4px ${NEON_CYAN}, 0 0 2px 1px ${NEON_WHITE}`,
               }}
             />
           </div>

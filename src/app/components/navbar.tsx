@@ -1,6 +1,6 @@
 'use client';
 
-import { motion} from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 // FPS Counter Component
@@ -73,7 +73,7 @@ export default function Navbar({ active }: NavbarProps) {
 
         {navScrolled ? (
           <motion.div
-            className="gpu-boost animate-rotate-border fixed rounded-full p-px bg-conic/[from_var(--border-angle)] from-black via-cyan-400 to-black shadow-xl"
+            className="gpu-boost animate-rotate-border fixed rounded-full p-px bg-conic/[from_var(--border-angle)] from-white via-zinc-800 to-white shadow-xl"
             layout
             initial={{ opacity: 0, scale: 0.8, y: -20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -87,14 +87,14 @@ export default function Navbar({ active }: NavbarProps) {
             whileTap={{ scale: 0.97, transition: { type: "tween", duration: 0.2, ease: "easeInOut" } }}
             whileHover={{ scale: 1.03, transition: { type: "tween", duration: 0.2, ease: "easeInOut" } }}
           >
-            <div className='bg-[#0f172a]/80 backdrop-blur-md border border-cyan-500/30 shadow-2xl rounded-full px-6 py-3'>
+            <div className='bg-black backdrop-blur-md   shadow-2xl rounded-full px-6 py-3'>
               <ul className='flex items-center space-x-6 font-inter tracking-wider text-white text-sm'>
                 <li className="flex items-center">
-                  <span className='w-3 h-3 bg-cyan-400/80   drop-shadow-[0_0_6px_cyan] rounded-full'></span>
+                  <span className='w-3 h-3 bg-white border-gray-600    drop-shadow-[0_0_6px_white] rounded-full'></span>
                 </li>
                 {section.map((sec) => (
                   <li key={sec.name}>
-                    <a href={sec.href} className="hover:text-cyan-400 transition duration-200">{sec.name}</a>
+                    <a href={sec.href} className="hover:text-zinc-500 transition duration-200">{sec.name}</a>
                   </li>
                 ))}
               </ul>
@@ -103,7 +103,7 @@ export default function Navbar({ active }: NavbarProps) {
         ) : (
           open ? (
             <motion.div
-              className="gpu-boost animate-rotate-border fixed rounded-3xl p-px bg-conic/[from_var(--border-angle)] from-black via-cyan-400 to-black shadow-xl "
+              className="gpu-boost animate-rotate-border fixed rounded-3xl p-px bg-conic/[from_var(--border-angle)] from-white via-zinc-800 to-white  shadow-xl "
               layout
               initial={{ opacity: 0, scale: 0.9, y: -10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -118,10 +118,10 @@ export default function Navbar({ active }: NavbarProps) {
               whileHover={{ scale: 1.03, transition: { type: "spring", stiffness: 500, damping: 30, mass: 0.5 } }}
               onClick={() => setOpen(!open)}
             >
-              <div className="py-5 px-6 bg-[#0f172a]/80 backdrop-blur-md border border-cyan-500/30 shadow-xl rounded-3xl ">
+              <div className="py-5 px-6 bg-black shadow-xl rounded-3xl ">
                 <ul className='flex flex-col items-center gap-4 font-inter tracking-wider text-white mb-5 text-sm'>
                   <li className="flex items-center ">
-                    <span className='w-3 h-3 mr-4 bg-cyan-400/80  drop-shadow-[0_0_6px_cyan] rounded-full'></span>
+                    <span className='w-3 h-3 mr-4 bg-white  drop-shadow-[0_0_6px_white] rounded-full'></span>
                     <a>{active}</a>
                   </li>
                 </ul>
@@ -131,7 +131,7 @@ export default function Navbar({ active }: NavbarProps) {
                     .filter((sec) => sec.name !== active)
                     .map((sec) => (
                       <li key={sec.name}>
-                        <a href={sec.href} className="hover:text-cyan-400 transition duration-200">{sec.name}</a>
+                        <a href={sec.href} className="hover:text-zinc-500 transition duration-200">{sec.name}</a>
                       </li>
                     ))}
                 </ul>
@@ -139,7 +139,7 @@ export default function Navbar({ active }: NavbarProps) {
             </motion.div>
           ) : (
             <motion.div
-              className="gpu-boost animate-rotate-border fixed rounded-full p-px bg-conic/[from_var(--border-angle)] from-black via-cyan-400 to-black shadow-lg"
+              className="gpu-boost animate-rotate-border fixed rounded-full p-px bg-conic/[from_var(--border-angle)] from-white via-zinc-800 to-white  shadow-lg"
               layout
               initial={{ opacity: 0, scale: 0.85, y: -10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -154,10 +154,10 @@ export default function Navbar({ active }: NavbarProps) {
               whileHover={{ scale: 1.03, transition: { type: "tween", duration: 0.2, ease: "easeInOut" } }}
               onClick={() => setOpen(!open)}
             >
-              <div className="px-6 py-3 bg-[#0f172a]/80 backdrop-blur-md border border-cyan-400/30 shadow-lg rounded-full text-white">
+              <div className="px-6 py-3 bg-black shadow-lg rounded-full text-white">
                 <ul className="flex items-center space-x-6 font-inter tracking-wider text-sm">
                   <li className="flex items-center">
-                    <span className="w-3 h-3 bg-cyan-400   drop-shadow-[0_0_6px_cyan] rounded-full"></span>
+                    <span className="w-3 h-3 bg-white   drop-shadow-[0_0_6px_white] rounded-full"></span>
                   </li>
                   <li>
                     <a>{active}</a>

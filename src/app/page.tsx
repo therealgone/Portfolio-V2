@@ -106,7 +106,7 @@ export default function Home() {
         <Project active={active} />
       </section>
       <section ref={ContactRef} id="contact" className="min-h-screen">
-        <Contact active={active} />
+        <Contact  />
       </section>
     </main>
   );

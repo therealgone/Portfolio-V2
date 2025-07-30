@@ -2,21 +2,16 @@
 @import "tailwindcss";
 
 :root {
-  background-color: black  ;
-  
+  background-color: black;
 }
 
 html {
   scroll-behavior: smooth;
   scrollbar-width: none;
- 
 }
 
 * {
-  cursor: none ;
-
-
-
+  cursor: none;
 }
 
 .font-inter {
@@ -26,32 +21,26 @@ html {
   font-family: "Lexend Tera", sans-serif;
 }
 
-
 @property --border-angle {
   syntax: "<angle>";
   inherits: false;
   initial-value: 0deg;
-  
-  
 }
 
 @keyframes border-rotate {
   to {
     --border-angle: 360deg;
-    
-    
   }
 }
 
 .animate-rotate-border {
- animation: border-rotate 3s linear infinite ;
+  animation: border-rotate 3s linear infinite;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 body::-webkit-scrollbar {
   display: none;
 }
-
 
 /* Inside your styles/globals.css */
 .gpu-boost {

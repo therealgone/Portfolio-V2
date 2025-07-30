@@ -46,22 +46,24 @@ export default function Tech({ active }: navprop) {
     return (
         <div className='min-h-screen py-20'>
             {show && (<>
-                <h1>Tech</h1>
+                <motion.h1
+                    className="text-5xl md:text-7xl font-bold text-white mb-10 text-center"
+                    {...motionProps90}
+                >
+                    Tech Stack
+                </motion.h1>
                 <div className=' '>
 
                     <motion.div
                         {...motionProps90} layout
-
-
-
                         className='grid grid-cols-3 gap-7 place-items-center'
                     >
                         {/* Section Title */}
-                        <motion.h1
-                            className='col-span-3 text-4xl font-bold text-center tracking-wide text-white mb-6'
+                        <motion.h2
+                            className='col-span-3 text-2xl md:text-3xl font-semibold text-zinc-400 text-center mb-4'
                         >
                             Languages
-                        </motion.h1>
+                        </motion.h2>
 
                         <motion.div
                             {...motionProps90} layout
@@ -144,11 +146,11 @@ export default function Tech({ active }: navprop) {
                         className='grid grid-cols-3 gap-7 place-items-center mt-20'
                     >
                         {/* Section Title */}
-                        <motion.h1
-                            className='col-span-3 text-4xl font-bold text-center tracking-wide text-white mb-6'
+                        <motion.h2
+                            className='col-span-3 text-2xl md:text-3xl font-semibold text-zinc-400 text-center mb-4'
                         >
                             Frameworks & Libraries
-                        </motion.h1>
+                        </motion.h2>
 
                         <motion.div
                             {...motionProps90} layout
@@ -257,11 +259,11 @@ export default function Tech({ active }: navprop) {
                         className='grid grid-cols-3 gap-7 place-items-center mt-20'
                     >
                         {/* Section Title */}
-                        <motion.h1
-                            className='col-span-3 text-4xl font-bold text-center tracking-wide text-white mb-6'
+                        <motion.h2
+                            className='col-span-3 text-2xl md:text-3xl font-semibold text-zinc-400 text-center mb-4'
                         >
                             Tools & Platforms
-                        </motion.h1>
+                        </motion.h2>
 
                         <motion.div
                             {...motionProps90} layout

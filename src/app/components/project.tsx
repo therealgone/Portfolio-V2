@@ -22,7 +22,7 @@ export default function projects({ active }: nav) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="text-2xl md:text-5xl mt-5 md:mt-10 font-mono tracking-widest bg-gradient-to-l from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent font-extrabold"
+                   className="text-4xl md:text-7xl font-bold text-white mb-10 text-center"
             >
                 Projects
             </motion.h1>
@@ -188,13 +188,40 @@ export default function projects({ active }: nav) {
                     </div>
                 </motion.a>
 
+                {/* 🔹 Project 7: Jeevan Baabu's Portfolio Website V1 */}
+                <motion.a
+                    initial={{ opacity: 0, y: 100 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    href="https://jeevan-beryl.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full max-w-[900px] mx-auto"
+                >
+                    <div className="relative w-full aspect-[9/7] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl hover:scale-[1.02] transition-transform duration-300 cursor-pointer hover:shadow-white/10">
+                        <img
+                            src="https://github.com/therealgone/Jeevan_Website/raw/main/UI"
+                            className="w-full h-full object-cover"
+                            alt="Jeevan Baabu's Portfolio Website V1"
+                            onError={(e) => { e.currentTarget.src = 'https://placehold.co/900x700?text=Portfolio+V1'; }}
+                        />
+                        <div className="absolute bottom-0 w-full h-[150px] md:h-[200px] bg-gradient-to-br from-gray-800/10 to-gray-900/10 backdrop-blur-xl border-t border-gray-700/10 p-3 md:p-5">
+                            <h1 className="text-white text-lg md:text-xl">Jeevan Baabu's Portfolio Website V1</h1>
+                            <p className="text-white/70 mt-1 md:mt-2 text-base md:text-xl">
+                                My very first personal portfolio website, built from scratch to showcase my projects, skills, and journey as a developer. This project marked the beginning of my web development path and is a milestone in my learning.
+                            </p>
+                        </div>
+                    </div>
+                </motion.a>
+
                 {/* 🔹 Coming Soon */}
                 <motion.div
                     initial={{ opacity: 0, y: 100 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, amount: 0.3 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="w-full max-w-[900px] h-[200px] md:h-[250px] rounded-2xl md:rounded-3xl flex items-center justify-center border-2 border-dashed border-gray-700/20 text-white/60 text-lg md:text-xl tracking-widest hover:scale-[1.03] transition-all duration-900 ease-in-out mx-auto"
+                    className="w-full max-w-[900px] h-[200px] md:h-[250px] rounded-2xl md:rounded-3xl flex items-center justify-center border-2 border-dashed border-white text-white/60 text-lg md:text-xl tracking-widest hover:scale-[1.03] transition-all duration-900 ease-in-out mx-auto"
                 >
                     <span className="animate-bounce">🚀</span> More Projects Coming Soon...
                 </motion.div>
