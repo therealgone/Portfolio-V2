@@ -27,7 +27,9 @@ export function SplineEmbed({ url, className = "" }: SplineEmbedProps) {
         if (containerRef.current) {
           containerRef.current.innerHTML = ""
         }
-        document.head.removeChild(script)
+        if (document.head.contains(script)) {
+          document.head.removeChild(script)
+        }
       }
     }
   }, [url])

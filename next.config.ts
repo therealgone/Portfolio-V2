@@ -1,20 +1,7 @@
 /** @type {import('next').NextConfig} */
+import type { Configuration as WebpackConfig } from "webpack"
+
 const nextConfig = {
-  // ❌ Remove this – it's known to break Spline in Vercel builds
-  // experimental: {
-  //   esmExternals: 'loose',
-  // },
-
-  webpack: (config) => {
-    // Optional: only apply externals in local builds (not needed in Vercel)
-    if (process.env.BUILD_ENV !== 'vercel') {
-      config.externals.push({
-        '@splinetool/runtime': '@splinetool/runtime',
-      });
-    }
-    return config;
-  },
-
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -30,16 +17,21 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/(.*)',
+        source: "/(.*)",
         headers: [
           {
-            key: 'X-Frame-Options',
-            value: 'SAMEORIGIN',
+            key: "X-Frame-Options",
+            value: "SAMEORIGIN",
           },
         ],
       },
-    ];
+    ]
   },
-};
 
-export default nextConfig;
+  webpack: (config: WebpackConfig) => {
+    // Remove problematic externals configuration for Spline
+    return config
+  },
+}
+
+export default nextConfig

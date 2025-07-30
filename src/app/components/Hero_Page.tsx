@@ -1,13 +1,26 @@
 "use client"
 
 import { motion, easeInOut } from "framer-motion"
-import { useState } from "react"
+import { useState, Suspense } from "react"
 import { useInView } from "react-intersection-observer"
-import Spline from "@splinetool/react-spline"
+import dynamic from "next/dynamic"
+
+// Dynamically import Spline to avoid SSR issues
+const Spline = dynamic(() => import("@splinetool/react-spline"), {
+  ssr: false,
+  loading: () => (
+    <div className="absolute inset-0 flex items-center justify-center bg-white">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto mb-4"></div>
+        <p className="text-gray-600">Loading 3D Scene...</p>
+      </div>
+    </div>
+  ),
+})
 
 export default function HeroPage() {
   const { ref: viewRef, inView } = useInView({
-    threshold: 0.1, // trigger when 10% visible
+    threshold: 0.1,
   })
 
   const [isLoading, setIsLoading] = useState(true)
@@ -64,16 +77,27 @@ export default function HeroPage() {
 
         {/* Spline Scene */}
         <div className="absolute inset-0 w-full h-full">
-         <Spline
-  scene="https://prod.spline.design/i7gHz8QTyTOZe0Wz/scene.splinecode"
-  onLoad={handleSplineLoad}
-  onError={handleSplineError}
-  style={{
-    width: "100%",
-    height: "100%",
-    pointerEvents: isLoading || hasError ? "none" : "auto", // block interaction while loading/error
-  }}
-/>
+          <Suspense
+            fallback={
+              <div className="absolute inset-0 flex items-center justify-center bg-white">
+                <div className="text-center">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto mb-4"></div>
+                  <p className="text-gray-600">Loading 3D Scene...</p>
+                </div>
+              </div>
+            }
+          >
+            <Spline
+              scene="https://prod.spline.design/i7gHz8QTyTOZe0Wz/scene.splinecode"
+              onLoad={handleSplineLoad}
+              onError={handleSplineError}
+              style={{
+                width: "100%",
+                height: "100%",
+                pointerEvents: isLoading || hasError ? "none" : "auto",
+              }}
+            />
+          </Suspense>
         </div>
 
         {/* Bottom Right Overlay */}

@@ -1,7 +1,12 @@
 "use client"
 
-import Spline from "@splinetool/react-spline"
 import { Suspense } from "react"
+import dynamic from "next/dynamic"
+
+// Dynamically import Spline to avoid SSR issues
+const Spline = dynamic(() => import("@splinetool/react-spline"), {
+  ssr: false,
+})
 
 interface SplineSceneProps {
   scene: string
