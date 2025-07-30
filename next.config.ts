@@ -1,12 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // ❌ Remove this line for Vercel compatibility
+  // ❌ Remove this – it's known to break Spline in Vercel builds
   // experimental: {
   //   esmExternals: 'loose',
   // },
 
-  webpack: (config: any) => {
-    // Only add externals in local/dev, skip for Vercel/Prod
+  webpack: (config) => {
+    // Optional: only apply externals in local builds (not needed in Vercel)
     if (process.env.BUILD_ENV !== 'vercel') {
       config.externals.push({
         '@splinetool/runtime': '@splinetool/runtime',

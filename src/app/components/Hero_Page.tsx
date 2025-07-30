@@ -64,15 +64,16 @@ export default function HeroPage() {
 
         {/* Spline Scene */}
         <div className="absolute inset-0 w-full h-full">
-          <Spline
-            scene="https://prod.spline.design/i7gHz8QTyTOZe0Wz/scene.splinecode"
-            onLoad={handleSplineLoad}
-            onError={handleSplineError}
-            style={{
-              width: "100%",
-              height: "100%",
-            }}
-          />
+         <Spline
+  scene="https://prod.spline.design/i7gHz8QTyTOZe0Wz/scene.splinecode"
+  onLoad={handleSplineLoad}
+  onError={handleSplineError}
+  style={{
+    width: "100%",
+    height: "100%",
+    pointerEvents: isLoading || hasError ? "none" : "auto", // block interaction while loading/error
+  }}
+/>
         </div>
 
         {/* Bottom Right Overlay */}
