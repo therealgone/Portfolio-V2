@@ -1,23 +1,32 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    esmExternals: 'loose',
-  },
+  // ❌ Remove this line for Vercel compatibility
+  // experimental: {
+  //   esmExternals: 'loose',
+  // },
+
   webpack: (config: any) => {
-    config.externals.push({
-      '@splinetool/runtime': '@splinetool/runtime',
-    });
+    // Only add externals in local/dev, skip for Vercel/Prod
+    if (process.env.BUILD_ENV !== 'vercel') {
+      config.externals.push({
+        '@splinetool/runtime': '@splinetool/runtime',
+      });
+    }
     return config;
   },
+
   eslint: {
     ignoreDuringBuilds: true,
   },
+
   typescript: {
     ignoreBuildErrors: true,
   },
+
   images: {
     unoptimized: true,
   },
+
   async headers() {
     return [
       {
