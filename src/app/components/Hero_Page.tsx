@@ -5,7 +5,7 @@ import { useInView } from "react-intersection-observer"
 import { useState, Suspense } from "react"
 import dynamic from "next/dynamic";
 
-const Spline = dynamic(() => import("@splinetool/react-spline/next"), { ssr: false });
+const Spline = dynamic(() => import("@splinetool/react-spline"), { ssr: false });
 
 export default function HeroPage() {
   const { ref: viewRef, inView } = useInView({
