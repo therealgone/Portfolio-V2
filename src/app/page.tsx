@@ -94,7 +94,7 @@ export default function Home() {
 
       <Navbar active={active} />
       <section ref={HeroRef} id="home" className="min-h-screen">
-        <Hero />
+        <Hero ></Hero>
       </section>
       <section ref={AboutRef} id="about" className="min-h-screen">
         <About active={active} />

@@ -11,8 +11,10 @@
   "dependencies": {
     "@fontsource/inter": "^5.2.6",
     "@react-three/fiber": "^9.2.0",
-    "@splinetool/react-spline": "^4.1.0",
-    "@splinetool/runtime": "^0.9.526",
+    "@react-three/drei": "^10.0.7",
+    "@react-three/postprocessing": "^3.0.4",
+    "postprocessing": "^6.33.4",
+    "three-stdlib": "^2.28.5",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.12",
     "gsap": "^3.13.0",

@@ -25,20 +25,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
- 
+
   return (
     <html lang="en">
       <head>
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        
-        {/* Optional: preload your spline */}
-        <link
-          rel="preload"
-          as="fetch"
-          href="https://prod.spline.design/i7gHz8QTyTOZe0Wz/scene.splinecode"
-          crossOrigin="anonymous"
-        />
       </head>
       <body className={`${inter.variable} ${lexend.variable}`}>
         {children}

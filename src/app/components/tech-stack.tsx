@@ -313,18 +313,6 @@ export default function Tech({ active }: navprop) {
                             </GlowCard>
                         </motion.div>
 
-                        <motion.div
-                            {...motionProps90} layout
-                        >
-                            <GlowCard className='   blur-[1.5px] hover:blur-none transition-all ease-in-out duration-500 '>
-                                <div className='flex'>
-                                    <Image src="/spline.svg" alt='Spline' width={50} height={50} className='w-[60px] ' />
-                                    <h1 className='flex flex-col items-center  justify-center px-5 text-3xl tracking-wide font-medium'>Spline</h1>
-                                </div>
-                                <p className='w-full text-justify   leading-normal text-white/40'>3D design tool used for creating and embedding interactive experiences.</p>
-                            </GlowCard>
-                        </motion.div>
-
                     </motion.div>
                 </div>
             </>)}
