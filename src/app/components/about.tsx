@@ -13,7 +13,7 @@ export default function About({ active }: navprop) {
     if (active === "Home") {
       setShow(true);
     }
-  });
+  }, [active]);
 
   const motionProps90 = {
     initial: { opacity: 0, y: 200 },
@@ -36,7 +36,8 @@ export default function About({ active }: navprop) {
             <motion.div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full" {...motionProps90} />
           </motion.div>
 
-          <motion.div className="p-px animate-rotate-border rounded-3xl bg-conic/[from_var(--border-angle)] from-[#0a0a0a] via-[#1f2937] to-[#0a0a0a]">
+          <motion.div className="p-px animate-rotate-border rounded-3xl bg-conic/[from_var(--border-angle)] from-[#0a0a0a] via-[#1f2937] to-[#0a0a0a]"
+          {...motionProps90}>
             <div className="py-5 px-6 backdrop-blur-3xl rounded-3xl bg-[#0a0a0a]">
               <motion.div className="text-center mb-12" {...motionProps90}>
                 <motion.h2 className="text-3xl md:text-4xl font-bold text-white mb-4" {...motionProps90}>

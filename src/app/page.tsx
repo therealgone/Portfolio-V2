@@ -6,44 +6,44 @@ import dynamic from 'next/dynamic';
 
 import { useState, useEffect, useRef } from "react";
 
- const About = dynamic(()=> import('./components/about') , {
-  ssr:false,
- })
+const About = dynamic(() => import('./components/about'), {
+  ssr: false,
+})
 
- const Tech = dynamic(() => import ('./components/tech-stack'), {
+const Tech = dynamic(() => import('./components/tech-stack'), {
 
-  ssr:false,
- })
+  ssr: false,
+})
 
- const Project = dynamic(() => import ('./components/project'), {
+const Project = dynamic(() => import('./components/project'), {
 
-  ssr:false,
- })
+  ssr: false,
+})
 
- const Contact = dynamic(() => import ('./components/contact'), {
+const Contact = dynamic(() => import('./components/contact'), {
 
-  ssr:false,
- })
+  ssr: false,
+})
 
 
 
 
 
 export default function Home() {
-  const HeroRef = useRef(null);
-  const AboutRef = useRef(null);
-  const TechRef = useRef(null);
-  const ProjectRef = useRef(null);
-  const ContactRef = useRef(null);
+  const HeroRef = useRef<HTMLElement | null>(null);
+  const AboutRef = useRef<HTMLElement | null>(null);
+  const TechRef = useRef<HTMLElement | null>(null);
+  const ProjectRef = useRef<HTMLElement | null>(null);
+  const ContactRef = useRef<HTMLElement | null>(null);
 
 
   const [active, setActive] = useState("")
 
   useEffect(() => {
-     if ('scrollRestoration' in window.history) {
-    window.history.scrollRestoration = 'manual';
-  }
-  window.scrollTo(0, 0);
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
     const section = [
       { id: "Home", ref: HeroRef },
       { id: "About", ref: AboutRef },
@@ -52,32 +52,31 @@ export default function Home() {
       { id: "Contact", ref: ContactRef },
     ];
 
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const page = section.find(sec => sec.ref.current === entry.target);
-            if (page) {
-              setActive(page.id);
-            }
+    function onScroll() {
+      const scrollY = window.scrollY;
+      const viewportHeight = window.innerHeight;
+      let closestSection = section[0];
+      let minDistance = Infinity;
+      section.forEach(sec => {
+        if (sec.ref.current) {
+          const rect = sec.ref.current.getBoundingClientRect();
+          const distance = Math.abs(rect.top);
+          // Only consider sections that are above or near the top
+          if (rect.top <= viewportHeight * 0.3 && distance < minDistance) {
+            minDistance = distance;
+            closestSection = sec;
           }
-        });
-      },
-      { threshold: 0.3, rootMargin: '-10% 0px -10% 0px' }
-    );
-
-    section.forEach(({ ref }) => {
-      if (ref.current) {
-        obs.observe(ref.current);
-      }
-    });
-
-    return () => {
-      section.forEach(({ ref }) => {
-        if (ref.current) {
-          obs.unobserve(ref.current);
         }
       });
+      setActive(closestSection.id);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    // Run once on mount
+    onScroll();
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
     };
   }, []);
 
@@ -94,21 +93,22 @@ export default function Home() {
 
 
       <Navbar active={active} />
-      <section ref={HeroRef} className="min-h-screen">
-        <Hero ></Hero>
+      <section ref={HeroRef} id="home" className="min-h-screen">
+        <Hero />
       </section>
-      <section ref={AboutRef} className="min-h-screen">
-        <About active={active}></About>
+      <section ref={AboutRef} id="about" className="min-h-screen">
+        <About active={active} />
       </section>
-      <section ref={TechRef} className="min-h-screen">
-        <Tech active={active}></Tech>
+      <section ref={TechRef} id="tech-stack" className="min-h-screen">
+        <Tech active={active} />
       </section>
-      <section ref={ProjectRef} className="min-h-screen">
-        <Project active={active} ></Project>
+      <section ref={ProjectRef} id="project" className="min-h-screen pt-10">
+        <Project active={active} />
       </section>
-      <section ref={ContactRef} className="min-h-screen">
-        <Contact active={active}></Contact>
+      <section ref={ContactRef} id="contact" className="min-h-screen">
+        <Contact active={active} />
       </section>
     </main>
   );
 }
+
