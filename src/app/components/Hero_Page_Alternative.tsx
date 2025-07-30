@@ -2,10 +2,8 @@
 
 import { motion, easeInOut } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { useState, Suspense } from "react"
-import dynamic from "next/dynamic";
-
-const Spline = dynamic(() => import("@splinetool/react-spline/next"), { ssr: false });
+import { useState } from "react"
+import { SplineWrapper } from "./SplineWrapper"
 
 export default function HeroPage() {
   const { ref: viewRef, inView } = useInView({
@@ -31,13 +29,6 @@ export default function HeroPage() {
     console.error("Spline loading error:", error)
     setHasError(true)
     setIsLoading(false)
-  }
-
-  const handleRetry = () => {
-    setHasError(false)
-    setIsLoading(true)
-    // Force re-render by reloading the page
-    window.location.reload()
   }
 
   const handleSkipLoading = () => {
@@ -73,64 +64,31 @@ export default function HeroPage() {
               </div>
               <h2 className="text-2xl font-bold mb-4">3D Content Unavailable</h2>
               <p className="text-gray-300 mb-6">The interactive 3D scene couldn't load.</p>
-              <div className="space-x-3">
-                <button
-                  onClick={handleRetry}
-                  className="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700"
-                >
-                  Try Again
-                </button>
-                <button
-                  onClick={handleSkipLoading}
-                  className="px-6 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full hover:bg-white/30"
-                >
-                  Continue Anyway
-                </button>
-              </div>
+              <button
+                onClick={handleSkipLoading}
+                className="px-6 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full hover:bg-white/30"
+              >
+                Continue to Portfolio
+              </button>
             </div>
           </div>
         )}
 
         {/* Spline Scene */}
         <div className="absolute inset-0 w-full h-full">
-          <Suspense
-            fallback={
-              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-700">
-                <div className="text-center text-white">
-                  <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-white mx-auto mb-6"></div>
-                  <h2 className="text-2xl font-bold mb-4">Loading 3D Experience</h2>
-                  <p className="text-gray-300">Preparing interactive content...</p>
-                </div>
-              </div>
-            }
-          >
-            <Spline
-              scene="https://prod.spline.design/i7gHz8QTyTOZe0Wz/scene.splinecode"
-              onLoad={handleSplineLoad}
-              onError={handleSplineError}
-              style={{
-                width: "100%",
-                height: "100%",
-                opacity: isLoading || hasError ? 0 : 1,
-                transition: "opacity 0.5s ease-in-out",
-                pointerEvents: isLoading || hasError ? "none" : "auto",
-              }}
-            />
-          </Suspense>
+          <SplineWrapper
+            scene="https://prod.spline.design/i7gHz8QTyTOZe0Wz/scene.splinecode"
+            onLoad={handleSplineLoad}
+            onError={handleSplineError}
+            style={{
+              width: "100%",
+              height: "100%",
+              opacity: isLoading || hasError ? 0 : 1,
+              transition: "opacity 0.5s ease-in-out",
+              pointerEvents: isLoading || hasError ? "none" : "auto",
+            }}
+          />
         </div>
-
-        {/* Fallback Hero Content - only show when not loading and no error */}
-        {!isLoading && !hasError && (
-          <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 flex items-center justify-center pointer-events-none opacity-0">
-            <div className="text-center text-white z-10">
-              <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Welcome
-              </h1>
-              <p className="text-2xl text-gray-300 mb-4">to my interactive portfolio</p>
-              <p className="text-lg text-gray-400">Scroll down to explore my work</p>
-            </div>
-          </div>
-        )}
 
         {/* Bottom Right Overlay */}
         <div className="absolute bottom-5 right-5 z-[9999] bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full">

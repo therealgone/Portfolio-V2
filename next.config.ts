@@ -23,8 +23,20 @@ const nextConfig = {
           },
         ],
       },
-    ]
+    ];
   },
-}
 
-export default nextConfig
+  webpack: (config: any, { isServer }: { isServer: boolean }) => {
+    // Handle Spline runtime for client-side only
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        path: false,
+      };
+    }
+    return config;
+  },
+};
+
+export default nextConfig;

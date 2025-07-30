@@ -70,7 +70,7 @@ export default function Tech({ active }: navprop) {
                         >
                             <GlowCard className='  blur-[1.5px] hover:blur-none transition-all ease-in-out duration-500 '>
                                 <div className='flex'>
-                                    <Image src="/html.svg" alt='HTML' width={50} height={50} loading='lazy' />
+                                    <Image src="html.svg" alt='HTML' width={50} height={50} loading='lazy' />
                                     <h1 className='flex flex-col items-center  justify-center px-5 text-3xl tracking-wide font-medium'>HTML</h1>
                                 </div>
                                 <p className='w-full text-justify   leading-normal text-white/40'>The standard markup language for creating web pages.</p>
