@@ -93,8 +93,10 @@ export default function Home() {
 
 
       <Navbar active={active} />
+      <>
+      
       <section ref={HeroRef} id="home" className="min-h-screen">
-        <Hero ></Hero>
+        <Hero  ></Hero>
       </section>
       <section ref={AboutRef} id="about" className="min-h-screen">
         <About active={active} />
@@ -108,6 +110,7 @@ export default function Home() {
       <section ref={ContactRef} id="contact" className="min-h-screen">
         <Contact  />
       </section>
+      </>
     </main>
   );
 }

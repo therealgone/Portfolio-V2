@@ -1,6 +1,7 @@
 import './globals.css'
 import type { Metadata } from "next";
 import { Inter, Lexend_Tera } from 'next/font/google'
+import { PrismScene } from "./components/three/PrismScene"
 
 const inter = Inter({
   subsets: ['latin'],
@@ -33,6 +34,8 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className={`${inter.variable} ${lexend.variable}`}>
+
+        
         {children}
       </body>
     </html>
