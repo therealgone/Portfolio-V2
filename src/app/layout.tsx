@@ -1,7 +1,7 @@
 import './globals.css'
 import type { Metadata } from "next";
 import { Inter, Lexend_Tera } from 'next/font/google'
-import { PrismScene } from "./components/three/PrismScene"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({
   subsets: ['latin'],
@@ -37,6 +37,7 @@ export default function RootLayout({
 
         
         {children}
+        <SpeedInsights/>
       </body>
     </html>
   );
