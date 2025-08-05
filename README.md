@@ -1,5 +1,7 @@
 # 🚀 Jeevan Baabu's Portfolio Website
 
+![Portfolio Preview](public/WebUI.png)
+
 A modern, responsive portfolio website built with cutting-edge technologies and beautiful animations. Features a 3D interactive background, smooth scrolling navigation, and a fully responsive design that works perfectly on all devices.
 
 ## ✨ Features
