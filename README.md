@@ -255,8 +255,8 @@ This project is open source and available under the [MIT License](LICENSE).
 **Jeevan Baabu Murugan**
 
 - GitHub: [@therealgone](https://github.com/therealgone)
-- LinkedIn: [Jeevan Baabu](https://www.linkedin.com/in/jeevan-baabu-97a19125b)
-- Portfolio: [Live Site](https://your-domain.vercel.app)
+- LinkedIn: [Jeevan Baabu](https://www.linkedin.com/in/jeevan-baabu-97a19125b/)
+- Portfolio: [Live Site](https://jeevanbaabu.vercel.app/)
 
 ---
 
