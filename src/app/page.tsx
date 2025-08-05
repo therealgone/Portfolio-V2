@@ -3,6 +3,9 @@ import Navbar from "./components/navbar"
 import Hero from "./components/Hero_Page"
 import ElectricCursor from "./components/electric-cursor";
 import dynamic from 'next/dynamic';
+import {PrismScene} from "./components/three/PrismScene"
+import './globals.css'
+
 
 import { useState, useEffect, useRef } from "react";
 
@@ -85,18 +88,20 @@ export default function Home() {
 
 
 
-    <main className="scroll-smooth text-white">
-      <>
-
+    <main className="scroll-smooth text-white ">
+    
+ <div className="absolute inset-0 z-0 ">
+    <PrismScene />
+  </div>
         <ElectricCursor></ElectricCursor>
-      </>
+      
 
 
       <Navbar active={active} />
-      <>
       
-      <section ref={HeroRef} id="home" className="min-h-screen">
-        <Hero  ></Hero>
+      
+      <section ref={HeroRef} id="home" className="h-screen mb-7">
+       
       </section>
       <section ref={AboutRef} id="about" className="min-h-screen">
         <About active={active} />
@@ -110,7 +115,7 @@ export default function Home() {
       <section ref={ContactRef} id="contact" className="min-h-screen">
         <Contact  />
       </section>
-      </>
+    
     </main>
   );
 }

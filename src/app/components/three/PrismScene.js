@@ -22,6 +22,7 @@ export function PrismScene() {
   }, []);
 
   return (
+     <div className="w-full h-screen min-h-screen flex ">
     <Canvas
       orthographic
       gl={{ antialias: false }}
@@ -40,6 +41,7 @@ export function PrismScene() {
         {texture && <LUT lut={texture} />}
       </EffectComposer>
     </Canvas>
+    </div>
   );
 }
 
@@ -92,8 +94,8 @@ function Scene() {
     // Tie beam to the mouse
     boxreflect.current.setRay(
       [
-        (state.pointer.x * state.viewport.width) / 2,
-        (state.pointer.y * state.viewport.height) / 2,
+        (state.pointer.x * state.viewport.width) ,
+        (state.pointer.y * state.viewport.height) ,
         0,
       ],
       [0, 0, 0]
@@ -107,23 +109,23 @@ function Scene() {
     );
     spot.current.intensity = rainbow.current.material.emissiveIntensity;
     // Animate ambience
-    lerp(ambient.current, "intensity", 0, 0.025);
+    lerp(ambient.current, "intensity", 0.006, 0.05);
   });
 
   return (
     <>
       {/* Lights */}
       <ambientLight ref={ambient} intensity={0} />
-      <pointLight position={[10, -10, 0]} intensity={0.05} />
-      <pointLight position={[0, 10, 0]} intensity={0.05} />
-      <pointLight position={[-10, 0, 0]} intensity={0.05} />
+      <pointLight position={[10, -10, 0]} intensity={10} />
+      <pointLight position={[0, 10, 0]} intensity={10} />
+      <pointLight position={[-10, 0, 0]} intensity={10} />
       <spotLight
         ref={spot}
-        intensity={1}
-        distance={7}
+        intensity={10}
+        distance={100}
         angle={1}
         penumbra={1}
-        position={[0, 0, 1]}
+        position={[1, 0, 1]}
       />
       {/* Caption */}
       <Center top bottom position={[0, 2, 0]}>
@@ -132,25 +134,28 @@ function Scene() {
           letterSpacing={-0.05}
           height={0.05}
           font="/fonts/Inter_Bold.json"
+          
         >
           Jeevan Baabu Murugan
-          <meshStandardMaterial color="white" />
+          <meshStandardMaterial color="White" metalness={0.5} roughness={0.3} />
         </Text3D>
       </Center>
       {/* Prism + blocks + reflect beam */}
-      <Beam ref={boxreflect} bounce={10} far={20}>
+      <Beam ref={boxreflect} bounce={20} far={10}>
         <Prism
           position={[0, -0.5, 0]}
           onRayOver={rayOver}
           onRayOut={rayOut}
           onRayMove={rayMove}
         />
-        <Box position={[2.25, -3.5, 0]} rotation={[0, 0, Math.PI / 3.5]} />
-        <Box position={[-2.5, -2.5, 0]} rotation={[0, 0, Math.PI / 4]} />
+        <Box position={[2.25, -3.5, 0]} rotation={[0, 0, Math.PI / 8]} />
+        <Box position={[-2.5, -2.5, 0]} rotation={[0, 0, Math.PI / 3]} />
         <Box position={[-3, 1, 0]} rotation={[0, 0, Math.PI / 4]} />
+        <Box position={[3, 1, 0]} rotation={[0, 0, Math.PI / 4]} />
+        
       </Beam>
       {/* Rainbow and flares */}
-      <Rainbow ref={rainbow} startRadius={0} endRadius={0.5} fade={0} />
+      <Rainbow ref={rainbow} startRadius={0} endRadius={0.9} fade={0} />
       <Flare
         ref={flare}
         visible={isPrismHit}

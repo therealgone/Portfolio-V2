@@ -2,16 +2,23 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { div } from "framer-motion/client";
 
 type nav = {
   active: string;
 }
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [notification, setNotification] = useState<string | false>(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+
+    
+    
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    
   };
+  const namesent = formData.name
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -21,7 +28,13 @@ export default function Contact() {
       body: JSON.stringify(formData),
     });
     if (res.ok) {
-      alert("Message sent!");
+
+      setNotification(namesent);
+
+      
+
+      setTimeout(() => setNotification(false), 5000);
+
       setFormData({ name: "", email: "", message: "" });
     } else {
       alert("Failed to send message.");
@@ -30,6 +43,21 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 py-20">
+      {notification && (
+        <motion.div 
+        initial={{opacity: 0 , y: -90}}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeInOut" }}
+       
+
+        className="fixed bottom-5 right-5 w-[330px] rounded-xl bg-white/50 backdrop-blur-md   p-4 animate-slide-up-fade z-50 text-black">
+  <div className="text-sm font-semibold mb-1 border-b border-white/30 pb-1">✔️ Message Sent</div>
+  <div className="text-xs">Thank you, {notification} , for reaching out.</div>
+  <div className="text-xs">We'll get back to you very soon.</div>
+</motion.div>
+
+      )}
+
       <motion.h1
         className="text-5xl md:text-7xl font-bold text-white mb-10 text-center"
         initial={{ opacity: 0, y: 90 }}

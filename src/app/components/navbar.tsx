@@ -1,42 +1,43 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { FaGithub, FaLinkedin } from "react-icons/fa"
 import { useEffect, useState } from 'react';
 
 // FPS Counter Component
 function FPSCounter() {
-  const [fps, setFps] = useState(0);
-  useEffect(() => {
-    let frame = 0;
-    let last = performance.now();
-    let lastFpsUpdate = last;
-    let rafId: number;
-    function loop(now: number) {
-      frame++;
-      if (now - lastFpsUpdate > 500) {
-        setFps(Math.round((frame * 1000) / (now - lastFpsUpdate)));
-        frame = 0;
-        lastFpsUpdate = now;
-      }
-      rafId = requestAnimationFrame(loop);
-    }
-    rafId = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(rafId);
-  }, []);
-  // FPS counter should always be visible, so remove the NODE_ENV check
+  
+
   return (
-    <motion.div
-      className="  gpu-boost animate-rotate-border fixed top-4 right-6 z-[99999] rounded-full p-px bg-conic/[from_var(--border-angle)] from-black via-cyan-400 to-black shadow-xl"
+     <motion.div
+      className="fixed top-4 right-6 z-[9999]  gpu-boost animate-rotate-border  rounded-full p-px bg-conic/[from_var(--border-angle)] from-white via-zinc-800 to-white shadow-xl"
       initial={{ opacity: 0, scale: 0.8, y: -10 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.8, y: -10 }}
-      transition={{ type: 'tween', duration: 0.5, ease: 'easeInOut' }}
-      style={{ pointerEvents: 'none', userSelect: 'none' }}
+      transition={{ type: "tween", duration: 0.5, ease: "easeInOut" }}
+      style={{ pointerEvents: "none", userSelect: "none" }}
     >
-      <div className="  gpu-boost bg-[#0f172a]/80 backdrop-blur-md border border-cyan-400/30 shadow-lg rounded-full px-4 py-1 text-white font-mono text-xs flex items-center justify-center min-w-[60px]">
-        FPS: {fps}
+      {/* Inner content with background */}
+      <div className="flex gap-5 items-center rounded-full bg-black px-5 py-3" style={{ pointerEvents: "auto" }}>
+        <a
+          href="https://github.com/therealgone"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white hover:text-gray-300 transition duration-200"
+        >
+          <FaGithub size={22} />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/jeevan-baabu-97a19125b"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white hover:text-blue-300 transition duration-200"
+        >
+          <FaLinkedin size={22} />
+        </a>
       </div>
     </motion.div>
+   
   );
 }
 
@@ -84,8 +85,8 @@ export default function Navbar({ active }: NavbarProps) {
               damping: 30,
               mass: 0.5,
             }}
-            whileTap={{ scale: 0.97, transition: { type: "tween", duration: 0.2, ease: "easeInOut" } }}
-            whileHover={{ scale: 1.03, transition: { type: "tween", duration: 0.2, ease: "easeInOut" } }}
+            whileTap={{ scale: 0.97, transition: { type: "tween", duration: 1, ease: "easeInOut" } }}
+            whileHover={{ scale: 1.03, transition: { type: "tween", duration: 1, ease: "easeInOut" } }}
           >
             <div className='bg-black backdrop-blur-md   shadow-2xl rounded-full px-6 py-3'>
               <ul className='flex items-center space-x-6 font-inter tracking-wider text-white text-sm'>

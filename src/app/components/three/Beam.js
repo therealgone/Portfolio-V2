@@ -5,7 +5,7 @@ import { useTexture } from "@react-three/drei";
 import { Reflect } from "./Reflect";
 
 export const Beam = forwardRef(
-  ({ children, position, stride = 4, width = 8, ...props }, fRef) => {
+  ({ children, position, stride = 5, width = 9, ...props }, fRef) => {
     const streaks = useRef(null);
     const glow = useRef(null);
     const reflect = useRef(null);

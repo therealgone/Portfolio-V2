@@ -18,6 +18,7 @@ s.absarc(w / 2 - r, -h / 2 + r, r, 2 * Math.PI, 1.5 * Math.PI, true);
 s.lineTo(-w / 2 + r, -h / 2);
 s.absarc(-w / 2 + r, -h / 2 + r, r, 1.5 * Math.PI, 1 * Math.PI, true);
 
+
 const boxGeometry = new THREE.BoxGeometry();
 const roundedBoxGeometry = new THREE.ExtrudeGeometry(s, {
   depth: 1,
