@@ -31,7 +31,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Favicon */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="J.png" sizes="any" />
         {/* Mobile viewport meta tag */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         {/* Preload critical fonts */}
@@ -50,7 +50,7 @@ export default function RootLayout({
         <meta property="og:title" content="Jeevan Baabu - Portfolio" />
         <meta property="og:description" content="Full Stack Developer, AI/ML Engineer, and Creative Technologist" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://your-domain.vercel.app" />
+        <meta property="og:url" content="https://jeevanbaabu.vercel.app/" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Jeevan Baabu - Portfolio" />
         <meta name="twitter:description" content="Full Stack Developer, AI/ML Engineer, and Creative Technologist" />
