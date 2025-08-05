@@ -44,23 +44,23 @@ export default function Tech({ active }: navprop) {
 
 
     return (
-        <div className='min-h-screen py-20'>
+        <div className='min-h-screen py-10 md:py-20'>
             {show && (<>
                 <motion.h1
-                    className="text-5xl md:text-7xl font-bold text-white mb-10 text-center"
+                    className="text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-6 md:mb-10 text-center"
                     {...motionProps90}
                 >
                     Tech Stack
                 </motion.h1>
-                <div className=' '>
+                <div className='px-4 md:px-0'>
 
                     <motion.div
                         {...motionProps90} layout
-                        className='grid grid-cols-3 gap-7 place-items-center'
+                        className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-7 place-items-center'
                     >
                         {/* Section Title */}
                         <motion.h2
-                            className='col-span-3 text-2xl md:text-3xl font-semibold text-zinc-400 text-center mb-4'
+                            className='col-span-1 md:col-span-2 lg:col-span-3 text-xl md:text-2xl lg:text-3xl font-semibold text-zinc-400 text-center mb-4'
                         >
                             Languages
                         </motion.h2>
@@ -68,24 +68,24 @@ export default function Tech({ active }: navprop) {
                         <motion.div
                             {...motionProps90} layout
                         >
-                            <GlowCard className='  blur-[1.5px] hover:blur-none transition-all ease-in-out duration-500 '>
-                                <div className='flex'>
-                                    <img src="/HTML.svg" alt='HTML' width={50} height={50} loading='lazy' />
+                            <GlowCard className='  md:blur-[1.5px] md:hover:blur-none transition-all ease-in-out duration-500  '>
+                                <div className='flex  md:flex-row '>
+                                    <img src="/HTML.svg" alt='HTML' width={40} height={40} className="md:w-[50px] md:h-[50px]" loading='lazy' />
                                     <h1 className='flex flex-col items-center  justify-center px-5 text-3xl tracking-wide font-medium'>HTML</h1>
                                 </div>
-                                <p className='w-full text-justify   leading-normal text-white/40'>The standard markup language for creating web pages.</p>
+                                <p className='w-full text-justify leading-normal text-white/40 text-sm md:text-base'>The standard markup language for creating web pages.</p>
                             </GlowCard>
                         </motion.div>
 
                         <motion.div
                             {...motionProps90} layout
                         >
-                            <GlowCard className='  blur-[1.5px] hover:blur-none transition-all ease-in-out duration-500 '>
-                                <div className='flex'>
-                                    <img src="/CSS.svg" alt='CSS' width={50} height={50} loading='lazy' />
+                            <GlowCard className='  md:blur-[1.5px] md:hover:blur-none transition-all ease-in-out duration-500 '>
+                                <div className='flex  md:flex-row '>
+                                    <img src="/CSS.svg" alt='CSS' width={40} height={40} className="md:w-[50px] md:h-[50px]" loading='lazy' />
                                     <h1 className='flex flex-col items-center  justify-center px-5 text-3xl tracking-wide font-medium'>CSS</h1>
                                 </div>
-                                <p className='w-full text-justify   leading-normal text-white/40'>A style sheet language used for describing the presentation of a document.</p>
+                                <p className='w-full text-justify leading-normal text-white/40 text-sm md:text-base'>A style sheet language used for describing the presentation of a document.</p>
                             </GlowCard>
                         </motion.div>
 
@@ -93,19 +93,19 @@ export default function Tech({ active }: navprop) {
                             {...motionProps90}
                             layout
                         >
-                            <GlowCard className='  blur-[1.5px] hover:blur-none transition-all ease-in-out duration-500 '>
-                                <div className='flex'>
-                                    <Image src="/JS.svg" alt='JavaScript' width={50} height={50} loading='lazy' />
+                            <GlowCard className='  md:blur-[1.5px] md:hover:blur-none transition-all ease-in-out duration-500 '>
+                                <div className='flex  md:flex-row items-center'>
+                                    <Image src="/JS.svg" alt='JavaScript' width={40} height={40} className="md:w-[50px] md:h-[50px]" loading='lazy' />
                                     <h1 className='flex flex-col items-center  justify-center px-5 text-3xl tracking-wide font-medium'>JavaScript (JS)</h1>
                                 </div>
-                                <p className='w-full text-justify   leading-normal text-white/40'>A programming language for creating interactive web content.</p>
+                                <p className='w-full text-justify leading-normal text-white/40 text-sm md:text-base'>A programming language for creating interactive web content.</p>
                             </GlowCard>
                         </motion.div>
 
                         <motion.div
                             {...motionProps90} layout
                         >
-                            <GlowCard className='  blur-[1.5px] hover:blur-none transition-all ease-in-out duration-500 '>
+                            <GlowCard className='  md:blur-[1.5px] md:hover:blur-none transition-all ease-in-out duration-500 '>
                                 <div className='flex'>
                                     <img src="/Python.svg" alt='Python' width={50} height={50} loading='lazy' />
                                     <h1 className='flex flex-col items-center  justify-center px-5 text-3xl tracking-wide font-medium'>Python</h1>
@@ -117,7 +117,7 @@ export default function Tech({ active }: navprop) {
                         <motion.div
                             {...motionProps90} layout
                         >
-                            <GlowCard className='  blur-[1.5px] hover:blur-none transition-all ease-in-out duration-500 '>
+                            <GlowCard className='  md:blur-[1.5px] md:hover:blur-none transition-all ease-in-out duration-500 '>
                                 <div className='flex'>
                                     <Image src="/sql-svgrepo-com.svg" alt='SQL' width={50} height={50} loading='lazy' />
                                     <h1 className='flex flex-col items-center  justify-center px-5 text-3xl tracking-wide font-medium'>SQL</h1>
@@ -129,7 +129,7 @@ export default function Tech({ active }: navprop) {
                         <motion.div
                             {...motionProps90} layout
                         >
-                            <GlowCard className='  blur-[1.5px] hover:blur-none transition-all ease-in-out duration-500 '>
+                            <GlowCard className='  md:blur-[1.5px] md:hover:blur-none transition-all ease-in-out duration-500 '>
                                 <div className='flex'>
                                     <Image src="/csh.svg" alt='C#' width={50} height={50} loading='lazy' />
                                     <h1 className='flex flex-col items-center  justify-center px-5 text-3xl tracking-wide font-medium'>C#</h1>
@@ -143,11 +143,11 @@ export default function Tech({ active }: navprop) {
                     {/* Frameworks & Libraries Section */}
                     <motion.div
                         {...motionProps90} layout
-                        className='grid grid-cols-3 gap-7 place-items-center mt-20'
+                        className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-7 place-items-center mt-12 md:mt-20'
                     >
                         {/* Section Title */}
                         <motion.h2
-                            className='col-span-3 text-2xl md:text-3xl font-semibold text-zinc-400 text-center mb-4'
+                            className='col-span-1 md:col-span-2 lg:col-span-3 text-xl md:text-2xl lg:text-3xl font-semibold text-zinc-400 text-center mb-4'
                         >
                             Frameworks & Libraries
                         </motion.h2>
@@ -156,19 +156,19 @@ export default function Tech({ active }: navprop) {
                             {...motionProps90} layout
 
                         >
-                            <GlowCard className='  blur-[1.5px] hover:blur-none transition-all ease-in-out duration-500 '>
-                                <div className='flex'>
-                                    <Image src="/react.svg" alt='React' width={50} height={50} loading='lazy' />
+                            <GlowCard className='  md:blur-[1.5px] md:hover:blur-none transition-all ease-in-out duration-500 '>
+                                <div className=' flex '>
+                                    <Image src="/react.svg" alt='React' width={40} height={40} className="md:w-[50px] md:h-[50px]" loading='lazy' />
                                     <h1 className='flex flex-col items-center  justify-center px-5 text-3xl tracking-wide font-medium'>React</h1>
                                 </div>
-                                <p className='w-full text-justify   leading-normal text-white/40'>JavaScript library for building user interfaces.</p>
+                                <p className='w-full text-justify leading-normal text-white/40 text-sm md:text-base'>JavaScript library for building user interfaces.</p>
                             </GlowCard>
                         </motion.div>
 
                         <motion.div
                             {...motionProps90} layout
                         >
-                            <GlowCard className='  blur-[1.5px] hover:blur-none transition-all ease-in-out duration-500 '>
+                            <GlowCard className='  md:blur-[1.5px] md:hover:blur-none transition-all ease-in-out duration-500 '>
                                 <div className='flex'>
                                     <Image src="/react.svg" alt='React Native' width={50} height={50} loading='lazy' />
                                     <h1 className='flex flex-col items-center  justify-center px-5 text-3xl tracking-wide font-medium'>React Native</h1>
@@ -180,7 +180,7 @@ export default function Tech({ active }: navprop) {
                         <motion.div
                             {...motionProps90} layout
                         >
-                            <GlowCard className='  blur-[1.5px] hover:blur-none transition-all ease-in-out duration-500 '>
+                            <GlowCard className='  md:blur-[1.5px] md:hover:blur-none transition-all ease-in-out duration-500 '>
                                 <div className='flex'>
                                     <Image src="/nextjs.svg" alt='Next.js' width={50} height={50} loading='lazy' />
                                     <h1 className='flex flex-col items-center  justify-center px-5 text-3xl tracking-wide font-medium'>Next.js</h1>
@@ -192,7 +192,7 @@ export default function Tech({ active }: navprop) {
                         <motion.div
                             {...motionProps90} layout
                         >
-                            <GlowCard className='  blur-[1.5px] hover:blur-none transition-all ease-in-out duration-500 '>
+                            <GlowCard className='  md:blur-[1.5px] md:hover:blur-none transition-all ease-in-out duration-500 '>
                                 <div className='flex'>
                                     <Image src="/tailwind.svg" alt='Tailwind CSS' width={50} height={50} loading='lazy' />
                                     <h1 className='flex flex-col items-center  justify-center px-5 text-3xl tracking-wide font-medium'>Tailwind CSS</h1>
@@ -216,7 +216,7 @@ export default function Tech({ active }: navprop) {
                         <motion.div
                             {...motionProps90} layout
                         >
-                            <GlowCard className='  blur-[1.5px] hover:blur-none transition-all ease-in-out duration-500 '>
+                            <GlowCard className='  md:blur-[1.5px] md:hover:blur-none transition-all ease-in-out duration-500 '>
                                 <div className='flex'>
                                     <Image src="/vite.svg" alt='Vite' width={50} height={50} loading='lazy' />
                                     <h1 className='flex flex-col items-center  justify-center px-5 text-3xl tracking-wide font-medium'>Vite</h1>
@@ -229,7 +229,7 @@ export default function Tech({ active }: navprop) {
                             {...motionProps90}
                             layout
                         >
-                            <GlowCard className='  blur-[1.5px] hover:blur-none transition-all ease-in-out duration-500 '>
+                            <GlowCard className='  md:blur-[1.5px] md:hover:blur-none transition-all ease-in-out duration-500 '>
                                 <div className='flex'>
                                     <Image src="/unity.svg" alt='Unity' width={50} height={50} loading='lazy' />
                                     <h1 className='flex flex-col items-center  justify-center px-5 text-3xl tracking-wide font-medium'>Unity</h1>
@@ -242,7 +242,7 @@ export default function Tech({ active }: navprop) {
                             {...motionProps90}
                             layout
                         >
-                            <GlowCard className='  blur-[1.5px] hover:blur-none transition-all ease-in-out duration-500 '>
+                            <GlowCard className='  md:blur-[1.5px] md:hover:blur-none transition-all ease-in-out duration-500 '>
                                 <div className='flex'>
                                     <Image src="/android.svg" alt='Android Studio' width={50} height={50} loading='lazy' />
                                     <h1 className='flex flex-col items-center  justify-center px-5 text-3xl tracking-wide font-medium'>Android Studio</h1>
@@ -256,11 +256,11 @@ export default function Tech({ active }: navprop) {
                     {/* Tools & Platforms Section */}
                     <motion.div
                         {...motionProps90} layout
-                        className='grid grid-cols-3 gap-7 place-items-center mt-20'
+                        className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-7 place-items-center mt-12 md:mt-20'
                     >
                         {/* Section Title */}
                         <motion.h2
-                            className='col-span-3 text-2xl md:text-3xl font-semibold text-zinc-400 text-center mb-4'
+                            className='col-span-1 md:col-span-2 lg:col-span-3 text-xl md:text-2xl lg:text-3xl font-semibold text-zinc-400 text-center mb-4'
                         >
                             Tools & Platforms
                         </motion.h2>
@@ -268,7 +268,7 @@ export default function Tech({ active }: navprop) {
                         <motion.div
                             {...motionProps90} layout
                         >
-                            <GlowCard className='  blur-[1.5px] hover:blur-none transition-all ease-in-out duration-500 '>
+                            <GlowCard className='  md:blur-[1.5px] md:hover:blur-none transition-all ease-in-out duration-500 '>
                                 <div className='flex'>
                                     <Image src="/git.svg" alt='Git' width={50} height={50} loading='lazy' />
                                     <h1 className='flex flex-col items-center  justify-center px-5 text-3xl tracking-wide font-medium'>Git</h1>
@@ -280,7 +280,7 @@ export default function Tech({ active }: navprop) {
                         <motion.div
                             {...motionProps90} layout
                         >
-                            <GlowCard className='  blur-[1.5px] hover:blur-none transition-all ease-in-out duration-500 '>
+                            <GlowCard className='  md:blur-[1.5px] md:hover:blur-none transition-all ease-in-out duration-500 '>
                                 <div className='flex'>
                                     <Image src="/github.svg" alt='GitHub' width={50} height={50} loading='lazy' />
                                     <h1 className='flex flex-col items-center  justify-center px-5 text-3xl tracking-wide font-medium'>GitHub</h1>
@@ -292,7 +292,7 @@ export default function Tech({ active }: navprop) {
                         <motion.div
                             {...motionProps90} layout
                         >
-                            <GlowCard className='  blur-[1.5px] hover:blur-none transition-all ease-in-out duration-500 '>
+                            <GlowCard className='  md:blur-[1.5px] md:hover:blur-none transition-all ease-in-out duration-500 '>
                                 <div className='flex'>
                                     <Image src="/ts.svg" alt='TypeScript' width={50} height={50} loading='lazy' />
                                     <h1 className='flex flex-col items-center  justify-center px-5 text-3xl tracking-wide font-medium'>TypeScript</h1>
@@ -304,7 +304,7 @@ export default function Tech({ active }: navprop) {
                         <motion.div
                             {...motionProps90} layout
                         >
-                            <GlowCard className='  blur-[1.5px] hover:blur-none transition-all ease-in-out duration-500 '>
+                            <GlowCard className='  md:blur-[1.5px] md:hover:blur-none transition-all ease-in-out duration-500 '>
                                 <div className='flex'>
                                     <Image src="/vercel.svg" alt='Vercel' width={50} height={50} loading='lazy' />
                                     <h1 className='flex flex-col items-center  justify-center px-5 text-3xl tracking-wide font-medium'>Vercel</h1>

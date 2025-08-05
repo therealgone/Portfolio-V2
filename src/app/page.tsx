@@ -3,29 +3,30 @@ import Navbar from "./components/navbar"
 import Hero from "./components/Hero_Page"
 import ElectricCursor from "./components/electric-cursor";
 import dynamic from 'next/dynamic';
-import {PrismScene} from "./components/three/PrismScene"
+import { PrismScene } from "./components/three/PrismScene"
 import './globals.css'
 
+import { useState, useEffect, useRef, Suspense } from "react";
 
-import { useState, useEffect, useRef } from "react";
-
+// Optimized dynamic imports with loading states
 const About = dynamic(() => import('./components/about'), {
   ssr: false,
+  loading: () => <div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div></div>
 })
 
 const Tech = dynamic(() => import('./components/tech-stack'), {
-
   ssr: false,
+  loading: () => <div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div></div>
 })
 
 const Project = dynamic(() => import('./components/project'), {
-
   ssr: false,
+  loading: () => <div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div></div>
 })
 
 const Contact = dynamic(() => import('./components/contact'), {
-
   ssr: false,
+  loading: () => <div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div></div>
 })
 
 
@@ -89,33 +90,41 @@ export default function Home() {
 
 
     <main className="scroll-smooth text-white ">
-    
- <div className="absolute inset-0 z-0 ">
-    <PrismScene />
-  </div>
-        <ElectricCursor></ElectricCursor>
-      
+
+      <div className="absolute inset-0 z-0 ">
+        <PrismScene />
+      </div>
+      <ElectricCursor ></ElectricCursor>
+
 
 
       <Navbar active={active} />
-      
-      
-      <section ref={HeroRef} id="home" className="h-screen mb-7">
-       
+
+
+      <section ref={HeroRef} id="home" className="min-h-screen mb-10 md:mb-7">
+
       </section>
       <section ref={AboutRef} id="about" className="min-h-screen">
-        <About active={active} />
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div></div>}>
+          <About active={active} />
+        </Suspense>
       </section>
       <section ref={TechRef} id="tech-stack" className="min-h-screen">
-        <Tech active={active} />
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div></div>}>
+          <Tech active={active} />
+        </Suspense>
       </section>
-      <section ref={ProjectRef} id="project" className="min-h-screen pt-10">
-        <Project active={active} />
+      <section ref={ProjectRef} id="project" className="min-h-screen pt-6 md:pt-10">
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div></div>}>
+          <Project active={active} />
+        </Suspense>
       </section>
       <section ref={ContactRef} id="contact" className="min-h-screen">
-        <Contact  />
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div></div>}>
+          <Contact />
+        </Suspense>
       </section>
-    
+
     </main>
   );
 }

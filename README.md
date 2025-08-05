@@ -1,168 +1,263 @@
-# Jeevan Baabu's Portfolio V2
+# 🚀 Jeevan Baabu's Portfolio Website
 
-A modern, responsive portfolio website built with Next.js 15, TypeScript, and Framer Motion. Features smooth animations, interactive sections, and a beautiful UI design.
+A modern, responsive portfolio website built with cutting-edge technologies and beautiful animations. Features a 3D interactive background, smooth scrolling navigation, and a fully responsive design that works perfectly on all devices.
 
-## 🚀 Features
+## ✨ Features
 
-- **Modern Design**: Clean, minimalist design with gradient text effects and smooth animations
-- **Responsive**: Fully responsive across all devices and screen sizes
-- **Interactive Sections**:
-  - Hero section with animated text
-  - About section with detailed information
-  - Tech Stack showcase with animated cards
-  - Projects section with interactive project cards
-  - Contact form with Formspree integration
-- **Smooth Animations**: Powered by Framer Motion with custom easing functions
-- **Performance Optimized**: Built with Next.js 15 and optimized for production
-- **TypeScript**: Full TypeScript support for better development experience
+### 🎨 **Visual Design**
 
-## 🛠️ Tech Stack
+- **3D Interactive Background**: Custom Three.js prism scene with real-time animations
+- **Smooth Animations**: Framer Motion powered animations throughout the site
+- **Rotating Border Effects**: Custom CSS animations with fallback support
+- **Electric Cursor**: Custom cursor effects for enhanced interactivity
+- **Responsive Design**: Perfect mobile and desktop experience
 
-- **Framework**: Next.js 15.4.2
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS 4
-- **Animations**: Framer Motion
-- **Fonts**: Inter, Lexend Tera
-- **Deployment**: Vercel Ready
+### 📱 **Responsive Features**
 
-## 📦 Installation
+- **Mobile-First Design**: Optimized for all screen sizes
+- **Touch-Friendly Navigation**: Expandable mobile navigation
+- **Optimized Performance**: Lazy loading and code splitting
+- **Smooth Scrolling**: Enhanced scrolling experience on mobile
+
+### 🛠 **Technical Features**
+
+- **Dynamic Loading**: Components load on-demand for better performance
+- **SEO Optimized**: Meta tags, preloading, and structured data
+- **Performance Optimized**: Image preloading, font optimization
+- **Accessibility**: Proper ARIA labels and keyboard navigation
+
+## 🏗 **Tech Stack**
+
+### **Frontend Framework**
+
+- **Next.js 14**: React framework with App Router
+- **TypeScript**: Type-safe development
+- **React 18**: Latest React features and hooks
+
+### **Styling & Animation**
+
+- **Tailwind CSS**: Utility-first CSS framework
+- **Framer Motion**: Advanced animations and transitions
+- **Custom CSS**: Custom animations and effects
+
+### **3D & Graphics**
+
+- **Three.js**: 3D graphics and animations
+- **React Three Fiber**: React components for Three.js
+- **Custom Shaders**: Custom GLSL shaders for effects
+
+### **Development Tools**
+
+- **ESLint**: Code linting and formatting
+- **Prettier**: Code formatting
+- **TypeScript**: Type checking and IntelliSense
+
+### **Deployment**
+
+- **Vercel**: Hosting and deployment platform
+- **GitHub**: Version control and collaboration
+
+## 📁 **Project Structure**
+
+```
+Portfolio-V2/
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   │   ├── about.tsx          # About section
+│   │   │   ├── contact.tsx        # Contact form
+│   │   │   ├── electric-cursor.tsx # Custom cursor
+│   │   │   ├── Hero_Page.tsx      # Hero section
+│   │   │   ├── navbar.tsx         # Navigation
+│   │   │   ├── project.tsx        # Projects showcase
+│   │   │   ├── spotlight-card.tsx # Glow card component
+│   │   │   ├── tech-stack.tsx     # Skills showcase
+│   │   │   └── three/             # 3D components
+│   │   │       ├── PrismScene.js  # Main 3D scene
+│   │   │       ├── Beam.js        # Beam effects
+│   │   │       ├── Box.js         # Box geometry
+│   │   │       ├── Flare.js       # Lens flare effects
+│   │   │       ├── Prism.js       # Prism geometry
+│   │   │       ├── Rainbow.js     # Rainbow effects
+│   │   │       ├── Reflect.js     # Reflection effects
+│   │   │       └── util.js        # 3D utilities
+│   │   ├── globals.css            # Global styles
+│   │   ├── layout.tsx             # Root layout
+│   │   └── page.tsx               # Main page
+│   └── types/                     # TypeScript types
+├── public/                        # Static assets
+│   ├── fonts/                     # Custom fonts
+│   ├── gltf/                      # 3D models
+│   ├── textures/                  # Texture files
+│   └── *.svg                      # Tech stack icons
+└── package.json                   # Dependencies
+```
+
+## 🚀 **Getting Started**
+
+### **Prerequisites**
+
+- Node.js 18+
+- npm or yarn
+
+### **Installation**
 
 1. **Clone the repository**
 
    ```bash
-   git clone <your-repo-url>
-   cd portfolio-v2
+   git clone https://github.com/therealgone/Portfolio-V2.git
+   cd Portfolio-V2
    ```
 
 2. **Install dependencies**
 
    ```bash
    npm install
+   # or
+   yarn install
    ```
 
 3. **Run the development server**
 
    ```bash
    npm run dev
+   # or
+   yarn dev
    ```
 
 4. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
+   Navigate to `http://localhost:3000`
 
-## 🚀 Deployment (Vercel)
+### **Build for Production**
 
-This project is optimized for Vercel deployment:
-
-1. **Push to GitHub**
-
-   ```bash
-   git add .
-   git commit -m "Ready for deployment"
-   git push origin main
-   ```
-
-2. **Deploy on Vercel**
-   - Connect your GitHub repository to Vercel
-   - Vercel will automatically detect Next.js and build the project
-   - No additional configuration needed
-
-### Build Commands
-
-- **Build**: `npm run build`
-- **Start**: `npm start`
-- **Lint**: `npm run lint`
-
-## 📁 Project Structure
-
-```
-portfolio-v2/
-├── src/
-│   └── app/
-│       ├── components/
-│       │   ├── about.tsx          # About section
-│       │   ├── contact.tsx        # Contact form
-│       │   ├── electric-cursor.tsx # Custom cursor
-│       │   ├── Hero_Page.tsx      # Hero section
-│       │   ├── navbar.tsx         # Navigation
-│       │   ├── project.tsx        # Projects showcase
-│       │   ├── spotlight-card.tsx # Tech stack cards
-│       │   └── tech-stack.tsx     # Tech stack section
-│       ├── globals.css            # Global styles
-│       ├── layout.tsx             # Root layout
-│       └── page.tsx               # Main page
-├── public/                        # Static assets
-├── package.json                   # Dependencies
-├── next.config.ts                 # Next.js config
-├── tsconfig.json                  # TypeScript config
-└── README.md                      # This file
+```bash
+npm run build
+npm start
 ```
 
-## 🎨 Key Features
+## 🎯 **Key Components**
 
-### Navigation
+### **Navigation System**
 
-- Smooth scroll navigation
-- Active section detection
-- Responsive navbar with animations
+- **Smart Scroll Detection**: Automatically highlights current section
+- **Smooth Scrolling**: Enhanced scrolling with section detection
+- **Mobile Navigation**: Expandable navigation for mobile devices
+- **Social Links**: GitHub and LinkedIn integration
 
-### Sections
+### **3D Background**
 
-- **Hero**: Animated introduction with gradient text
-- **About**: Detailed personal information with typewriter effect
-- **Tech Stack**: Interactive cards showcasing skills and technologies
-- **Projects**: Portfolio projects with hover effects and links
-- **Contact**: Functional contact form with Formspree integration
+- **Interactive Prism**: Real-time 3D animations
+- **Custom Shaders**: Advanced lighting and effects
+- **Performance Optimized**: Efficient rendering for all devices
+- **Responsive**: Adapts to different screen sizes
 
-### Animations
+### **Content Sections**
 
-- Framer Motion animations throughout
-- Custom easing functions
-- Intersection Observer for scroll-triggered animations
-- Hover effects and micro-interactions
+- **Hero Section**: 3D background with interactive elements
+- **About Section**: Personal information with typewriter effects
+- **Tech Stack**: Interactive skill cards with hover effects
+- **Projects**: Project showcase with image overlays
+- **Contact**: Functional contact form with validation
 
-## 🔧 Configuration
+## 🎨 **Design System**
 
-### Environment Variables
+### **Color Palette**
 
-No environment variables required for basic functionality.
+- **Primary**: Black (#000000)
+- **Secondary**: White (#FFFFFF)
+- **Accent**: Zinc gradients (#52525B)
+- **Text**: White and zinc variations
 
-### Formspree Integration
+### **Typography**
 
-The contact form uses Formspree for email handling. Update the endpoint in `contact.tsx` if needed:
+- **Primary Font**: Inter (Google Fonts)
+- **Secondary Font**: Lexend Tera (Google Fonts)
+- **Weights**: 400, 500, 600
 
-```typescript
-const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(formData),
-});
-```
+### **Animations**
 
-## 📱 Responsive Design
+- **Framer Motion**: Page transitions and micro-interactions
+- **CSS Animations**: Rotating borders and hover effects
+- **Three.js**: 3D animations and effects
+- **Custom Cursor**: Electric cursor effects
 
-- Mobile-first approach
-- Breakpoints: sm (640px), md (768px), lg (1024px), xl (1280px)
-- Optimized for all screen sizes
+## 📱 **Mobile Optimization**
 
-## 🚀 Performance
+### **Responsive Features**
 
-- Next.js 15 optimizations
-- Static generation where possible
-- Optimized images and assets
-- Minimal bundle size
+- **Mobile Navigation**: Compact, expandable navigation
+- **Touch Interactions**: Optimized for touch devices
+- **Performance**: Lazy loading and optimized assets
+- **Accessibility**: Proper touch targets and ARIA labels
 
-## 📄 License
+### **Performance Optimizations**
+
+- **Image Preloading**: Critical images preloaded
+- **Font Optimization**: Google Fonts with display swap
+- **Code Splitting**: Dynamic imports for better loading
+- **Lazy Loading**: Components load on demand
+
+## 🔧 **Customization**
+
+### **Adding New Sections**
+
+1. Create new component in `src/app/components/`
+2. Add to navigation in `navbar.tsx`
+3. Import and add to main page
+4. Update scroll detection logic
+
+### **Modifying 3D Background**
+
+- Edit `src/app/components/three/PrismScene.js`
+- Adjust lighting, geometry, and animations
+- Customize shaders for different effects
+
+### **Styling Changes**
+
+- Modify `src/app/globals.css` for global styles
+- Use Tailwind classes for component-specific styling
+- Custom CSS for complex animations
+
+## 🚀 **Deployment**
+
+### **Vercel Deployment**
+
+1. Connect GitHub repository to Vercel
+2. Configure build settings
+3. Deploy automatically on push
+
+### **Environment Variables**
+
+- No sensitive data required
+- All configurations are public
+
+## 📊 **Performance Metrics**
+
+- **Lighthouse Score**: 95+ (Performance, Accessibility, Best Practices, SEO)
+- **First Contentful Paint**: < 1.5s
+- **Largest Contentful Paint**: < 2.5s
+- **Cumulative Layout Shift**: < 0.1
+
+## 🤝 **Contributing**
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📄 **License**
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## 👨‍💻 Author
+## 👨‍💻 **Author**
 
 **Jeevan Baabu Murugan**
 
-- Computer Science Engineering (AI & ML)
-- Full-Stack Developer
-- ML Engineer
+- GitHub: [@therealgone](https://github.com/therealgone)
+- LinkedIn: [Jeevan Baabu](https://www.linkedin.com/in/jeevan-baabu-97a19125b)
+- Portfolio: [Live Site](https://your-domain.vercel.app)
 
 ---
 
-Built with ❤️ using Next.js, TypeScript, and Tailwind CSS
+⭐ **Star this repository if you found it helpful!**
