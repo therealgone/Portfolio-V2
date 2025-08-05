@@ -70,7 +70,7 @@ export default function Tech({ active }: navprop) {
                         >
                             <GlowCard className='  blur-[1.5px] hover:blur-none transition-all ease-in-out duration-500 '>
                                 <div className='flex'>
-                                    <img src="/html.svg" alt='HTML' width={50} height={50} loading='lazy' />
+                                    <img src="/HTML.svg" alt='HTML' width={50} height={50} loading='lazy' />
                                     <h1 className='flex flex-col items-center  justify-center px-5 text-3xl tracking-wide font-medium'>HTML</h1>
                                 </div>
                                 <p className='w-full text-justify   leading-normal text-white/40'>The standard markup language for creating web pages.</p>
@@ -82,7 +82,7 @@ export default function Tech({ active }: navprop) {
                         >
                             <GlowCard className='  blur-[1.5px] hover:blur-none transition-all ease-in-out duration-500 '>
                                 <div className='flex'>
-                                    <img src="/css.svg" alt='CSS' width={50} height={50} loading='lazy' />
+                                    <img src="/CSS.svg" alt='CSS' width={50} height={50} loading='lazy' />
                                     <h1 className='flex flex-col items-center  justify-center px-5 text-3xl tracking-wide font-medium'>CSS</h1>
                                 </div>
                                 <p className='w-full text-justify   leading-normal text-white/40'>A style sheet language used for describing the presentation of a document.</p>
@@ -107,7 +107,7 @@ export default function Tech({ active }: navprop) {
                         >
                             <GlowCard className='  blur-[1.5px] hover:blur-none transition-all ease-in-out duration-500 '>
                                 <div className='flex'>
-                                    <img src="/python.svg" alt='Python' width={50} height={50} loading='lazy' />
+                                    <img src="/Python.svg" alt='Python' width={50} height={50} loading='lazy' />
                                     <h1 className='flex flex-col items-center  justify-center px-5 text-3xl tracking-wide font-medium'>Python</h1>
                                 </div>
                                 <p className='w-full text-justify   leading-normal text-white/40'>High-level language known for its readability and use in AI/ML.</p>
