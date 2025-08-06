@@ -40,7 +40,7 @@ export function PrismScene() {
       <Canvas
         orthographic
         gl={{ antialias: false }}
-        camera={{ position: [0, 0, 100], zoom: isMobile ? 20 : 70 }}
+        camera={{ position: [0, 0, 100], zoom: isMobile ? 25 : 70 }}
       >
         <color attach="background" args={["black"]} />
         <Scene />
@@ -155,6 +155,7 @@ function Scene() {
         </Text3D>
       </Center>
       {/* Prism + blocks + reflect beam */}
+
       <Beam ref={boxreflect} bounce={10} far={30}>
         <Prism
           position={[0, -0.5, 0]}
