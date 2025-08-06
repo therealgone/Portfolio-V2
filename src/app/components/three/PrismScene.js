@@ -15,32 +15,46 @@ import { calculateRefractionAngle, lerp, lerpV3 } from "./util";
 
 export function PrismScene() {
   const [texture, setTexture] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
 
+  // ✅ Load LUT only once
   useEffect(() => {
     const loader = new LUTCubeLoader();
     loader.load("/lut/F-6800-STD.cube", setTexture);
   }, []);
 
+  // ✅ Detect if device is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile(); // On load
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
-     <div className="w-full h-screen min-h-screen flex ">
-    <Canvas
-      orthographic
-      gl={{ antialias: false }}
-      camera={{ position: [0, 0, 100], zoom: 70 }}
-    >
-      <color attach="background" args={["black"]} />
-      <Scene />
-      <EffectComposer disableNormalPass>
-        <Bloom
-          mipmapBlur
-          levels={9}
-          intensity={1.5}
-          luminanceThreshold={1}
-          luminanceSmoothing={1}
-        />
-        {texture && <LUT lut={texture} />}
-      </EffectComposer>
-    </Canvas>
+    <div className="w-full h-screen min-h-screen flex">
+      <Canvas
+        orthographic
+        gl={{ antialias: false }}
+        camera={{ position: [0, 0, 100], zoom: isMobile ? 40 : 70 }}
+      >
+        <color attach="background" args={["black"]} />
+        <Scene />
+        <EffectComposer disableNormalPass>
+          <Bloom
+            mipmapBlur
+            levels={9}
+            intensity={1.5}
+            luminanceThreshold={1}
+            luminanceSmoothing={1}
+          />
+          {texture && <LUT lut={texture} />}
+        </EffectComposer>
+      </Canvas>
     </div>
   );
 }
