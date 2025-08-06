@@ -40,7 +40,7 @@ export function PrismScene() {
       <Canvas
         orthographic
         gl={{ antialias: false }}
-        camera={{ position: [0, 0, 100], zoom: isMobile ? 40 : 70 }}
+        camera={{ position: [0, 0, 100], zoom: isMobile ? 20 : 70 }}
       >
         <color attach="background" args={["black"]} />
         <Scene />
