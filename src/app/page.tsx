@@ -66,7 +66,7 @@ export default function Home() {
           const rect = sec.ref.current.getBoundingClientRect();
           const distance = Math.abs(rect.top);
           // Only consider sections that are above or near the top
-          if (rect.top <= viewportHeight * 0.3 && distance < minDistance) {
+          if (rect.top <= viewportHeight * 10 && distance < minDistance) {
             minDistance = distance;
             closestSection = sec;
           }

@@ -116,13 +116,13 @@ function Scene() {
     <>
       {/* Lights */}
       <ambientLight ref={ambient} intensity={0} />
-      <pointLight position={[10, -10, 0]} intensity={10} />
-      <pointLight position={[0, 10, 0]} intensity={10} />
-      <pointLight position={[-10, 0, 0]} intensity={10} />
+      <pointLight position={[0, 0, 0]} intensity={0} />
+      <pointLight position={[0, 0, 0]} intensity={0} />
+      <pointLight position={[0, 0, 0]} intensity={0} />
       <spotLight
         ref={spot}
-        intensity={10}
-        distance={100}
+        intensity={1}
+        distance={1}
         angle={1}
         penumbra={1}
         position={[1, 0, 1]}
@@ -137,11 +137,11 @@ function Scene() {
           
         >
           Jeevan Baabu Murugan
-          <meshStandardMaterial color="White" metalness={0.5} roughness={0.3} />
+          <meshStandardMaterial color="White" />
         </Text3D>
       </Center>
       {/* Prism + blocks + reflect beam */}
-      <Beam ref={boxreflect} bounce={20} far={10}>
+      <Beam ref={boxreflect} bounce={10} far={30}>
         <Prism
           position={[0, -0.5, 0]}
           onRayOver={rayOver}
@@ -155,13 +155,13 @@ function Scene() {
         
       </Beam>
       {/* Rainbow and flares */}
-      <Rainbow ref={rainbow} startRadius={0} endRadius={0.9} fade={0} />
+      <Rainbow ref={rainbow} startRadius={0} endRadius={1.5} fade={1} />
       <Flare
         ref={flare}
         visible={isPrismHit}
         renderOrder={10}
-        scale={1.25}
-        streak={[12.5, 20, 1]}
+        scale={1}
+        streak={[12.5, 20, 5]}
       />
     </>
   );

@@ -34,40 +34,40 @@ export default function Navbar({ active }: NavbarProps) {
 
   return (
     <>
-      
+
       {/* Desktop Navigation */}
       <div className='hidden md:flex gpu-boost sticky top-0 z-[9999] justify-center py-9'>
-         <motion.div
-  className="fixed top-4 right-6 "
-  initial={{ opacity: 0, scale: 0.8, y: -10 }}
-  animate={{ opacity: 1, scale: 1, y: 0 }}
-  exit={{ opacity: 0, scale: 0.8, y: -10 }}
-  transition={{ type: "tween", duration: 0.5, ease: "easeInOut" }}
->
-  <div className="animate-rotate-border rounded-full p-px bg-[conic-gradient(white,black,white)] shadow-xl">
-    {/* Inner content: must re-enable pointer events */}
-    <div
-      className="flex gap-3 md:gap-5 items-center rounded-full bg-black px-3 md:px-5 py-2 md:py-3  "
-    >
-      <a
-        href="https://github.com/therealgone"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-white hover:text-white/50 transition duration-200 "
-      >
-        <FaGithub size={18} className="md:w-[22px] md:h-[22px]" />
-      </a>
-      <a
-        href="https://www.linkedin.com/in/jeevan-baabu-97a19125b"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-white hover:text-blue-700 transition duration-200"
-      >
-        <FaLinkedin size={18} className="md:w-[22px] md:h-[22px]" />
-      </a>
-    </div>
-  </div>
-</motion.div>
+        <motion.div
+          className="fixed top-4 right-6 "
+          initial={{ opacity: 0, scale: 0.8, y: -10 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.8, y: -10 }}
+          transition={{ type: "tween", duration: 0.5, ease: "easeInOut" }}
+        >
+          <div className="animate-rotate-border rounded-full p-px bg-[conic-gradient(white,black,white)] shadow-xl">
+            {/* Inner content: must re-enable pointer events */}
+            <div
+              className="flex gap-3 md:gap-5 items-center rounded-full bg-black px-3 md:px-5 py-2 md:py-3  "
+            >
+              <a
+                href="https://github.com/therealgone"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-white/50 transition duration-200 "
+              >
+                <FaGithub size={18} className="md:w-[22px] md:h-[22px]" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/jeevan-baabu-97a19125b"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-blue-700 transition duration-200"
+              >
+                <FaLinkedin size={18} className="md:w-[22px] md:h-[22px]" />
+              </a>
+            </div>
+          </div>
+        </motion.div>
 
         {navScrolled ? (
           <motion.div
@@ -186,17 +186,19 @@ export default function Navbar({ active }: NavbarProps) {
             whileHover={{ scale: 1.03, transition: { type: "tween", duration: 0.2, ease: "easeInOut" } }}
             onClick={() => setOpen(!open)}
           >
-            <div className='bg-black backdrop-blur-md shadow-2xl rounded-2xl px-4 py-3'>
-              <div className='flex items-center justify-between mb-3'>
-                <span className='w-2 h-2 bg-white border-gray-600 drop-shadow-[0_0_6px_white] rounded-full'></span>
-                <span className="text-white text-xs font-medium">{active}</span>
+            <div className='bg-black backdrop-blur-md shadow-2xl rounded-2xl px-4 py-3 text-center'>
+              <div className='flex items-center mb-3 text-center'>
+                <li className='flex  items-center'>
+                <span className='w-2 h-2 bg-white border-gray-600 drop-shadow-[0_0_6px_white] rounded-full '></span>
+                <a className="text-white text-xs font-mediu px-20 ">{active} </a>
+                </li>
               </div>
-              <ul className='flex flex-col gap-2 font-inter tracking-wider text-white text-xs'>
+              <ul className='flex flex-row items-center justify-start  gap-2 font-inter tracking-wider text-white text-xs '>
                 {section
                   .filter((sec) => sec.name !== active)
                   .map((sec) => (
                     <li key={sec.name}>
-                      <a href={sec.href} className="hover:text-zinc-500 transition duration-200 block py-1">{sec.name}</a>
+                      <a href={sec.href} className="hover:text-zinc-500 transition duration-200 block py-1 text-center">{sec.name}</a>
                     </li>
                   ))}
               </ul>
