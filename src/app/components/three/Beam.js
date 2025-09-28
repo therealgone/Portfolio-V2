@@ -5,7 +5,7 @@ import { useTexture } from "@react-three/drei";
 import { Reflect } from "./Reflect";
 
 export const Beam = forwardRef(
-  ({ children, position, stride = 5, width = 9, ...props }, fRef) => {
+  ({ children, position, stride = 5, width = 9, instanceCount = 100, ...props }, fRef) => {
     const streaks = useRef(null);
     const glow = useRef(null);
     const reflect = useRef(null);
@@ -89,7 +89,7 @@ export const Beam = forwardRef(
         </Reflect>
         <instancedMesh
           ref={streaks}
-          args={[null, null, 100]}
+          args={[null, null, instanceCount]}
           instanceMatrix-usage={THREE.DynamicDrawUsage}
         >
           <planeGeometry />
@@ -102,7 +102,7 @@ export const Beam = forwardRef(
         </instancedMesh>
         <instancedMesh
           ref={glow}
-          args={[null, null, 100]}
+          args={[null, null, instanceCount]}
           instanceMatrix-usage={THREE.DynamicDrawUsage}
         >
           <planeGeometry />

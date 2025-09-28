@@ -48,6 +48,7 @@ export default function Home() {
       window.history.scrollRestoration = 'manual';
     }
     window.scrollTo(0, 0);
+
     const section = [
       { id: "Home", ref: HeroRef },
       { id: "About", ref: AboutRef },
@@ -56,31 +57,50 @@ export default function Home() {
       { id: "Contact", ref: ContactRef },
     ];
 
-    function onScroll() {
-      const scrollY = window.scrollY;
-      const viewportHeight = window.innerHeight;
-      let closestSection = section[0];
-      let minDistance = Infinity;
-      section.forEach(sec => {
-        if (sec.ref.current) {
-          const rect = sec.ref.current.getBoundingClientRect();
-          const distance = Math.abs(rect.top);
-          // Only consider sections that are above or near the top
-          if (rect.top <= viewportHeight * 10 && distance < minDistance) {
-            minDistance = distance;
-            closestSection = sec;
+    let rafId: number | null = null;
+    let pendingActive: string | null = null;
+
+    const updateActive = (next: string) => {
+      if (pendingActive === next) return;
+      pendingActive = next;
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        setActive(pendingActive as string);
+        rafId = null;
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Pick the entry closest to viewport top and intersecting
+        let best: { id: string; top: number } | null = null;
+        for (const entry of entries) {
+          const target = entry.target as HTMLElement;
+          const id = target.getAttribute('id') || '';
+          const rect = target.getBoundingClientRect();
+          if (entry.isIntersecting) {
+            const top = Math.abs(rect.top);
+            if (!best || top < best.top) best = { id, top };
           }
         }
-      });
-      setActive(closestSection.id);
-    }
+        if (best) updateActive(
+          best.id === 'home' ? 'Home' :
+          best.id === 'about' ? 'About' :
+          best.id === 'tech-stack' ? 'Tech-Stack' :
+          best.id === 'project' ? 'Project' :
+          best.id === 'contact' ? 'Contact' : 'Home'
+        );
+      },
+      { rootMargin: "-20% 0px -70% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] }
+    );
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    // Run once on mount
-    onScroll();
+    section.forEach(sec => {
+      if (sec.ref.current) observer.observe(sec.ref.current);
+    });
 
     return () => {
-      window.removeEventListener('scroll', onScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+      observer.disconnect();
     };
   }, []);
 

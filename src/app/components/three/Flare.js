@@ -4,7 +4,7 @@ import { useTexture, Instances, Instance } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
 export const Flare = forwardRef(
-  ({ streak = [8, 20, 1], visible, ...props }, fRef) => {
+  ({ streak = [8, 20, 1], visible, lowPower = false, ...props }, fRef) => {
     const ref = useRef(null);
     const [streakTexture, dotTexture, glowTexture] = useTexture([
       "/textures/lensflare/lensflare2.png",
@@ -40,7 +40,7 @@ export const Flare = forwardRef(
       <group ref={fRef} {...props} visible={visible} dispose={null}>
         <Instances frames={visible ? Infinity : 1}>
           <planeGeometry />
-          <meshBasicMaterial map={dotTexture} {...config} />
+          <meshBasicMaterial map={dotTexture} {...config} opacity={lowPower ? 0.8 : 1} />
           <group ref={ref}>
             <Instance scale={0.5} />
             <Instance scale={1.25} />
@@ -51,11 +51,11 @@ export const Flare = forwardRef(
         </Instances>
         <mesh scale={1}>
           <planeGeometry />
-          <meshBasicMaterial map={glowTexture} {...config} opacity={1} />
+          <meshBasicMaterial map={glowTexture} {...config} opacity={lowPower ? 0.8 : 1} />
         </mesh>
         <mesh rotation={[0, 0, Math.PI / 2]} scale={streak}>
           <planeGeometry />
-          <meshBasicMaterial map={streakTexture} {...config} opacity={1} />
+          <meshBasicMaterial map={streakTexture} {...config} opacity={lowPower ? 0.8 : 1} />
         </mesh>
       </group>
     );

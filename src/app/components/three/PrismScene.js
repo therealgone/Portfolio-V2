@@ -16,6 +16,7 @@ import { calculateRefractionAngle, lerp, lerpV3 } from "./util";
 export function PrismScene() {
   const [texture, setTexture] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [isLowPower, setIsLowPower] = useState(false);
 
   // ✅ Load LUT only once
   useEffect(() => {
@@ -35,31 +36,43 @@ export function PrismScene() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  // ✅ Low-power/adaptive performance detection
+  useEffect(() => {
+    const connection = typeof navigator !== 'undefined' && navigator.connection ? navigator.connection : null;
+    const saveData = !!(connection && connection.saveData);
+    const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const lowThreads = typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 4;
+    const lowDpr = window.devicePixelRatio && window.devicePixelRatio <= 1;
+    setIsLowPower(saveData || reducedMotion || lowThreads || lowDpr);
+  }, []);
+
   return (
     <div className="w-full h-screen min-h-screen flex">
       <Canvas
         orthographic
-        gl={{ antialias: false }}
-        camera={{ position: [0, 0, 100], zoom: isMobile ? 25 : 70 }}
+        dpr={[1, isLowPower ? 1.25 : 1.75]}
+        gl={{ antialias: false, powerPreference: "high-performance" }}
+        shadows={false}
+        camera={{ position: [0, 0, 100], zoom: isMobile ? 24 : 64 }}
       >
         <color attach="background" args={["black"]} />
-        <Scene />
+        <Scene isLowPower={isLowPower} />
         <EffectComposer disableNormalPass>
           <Bloom
             mipmapBlur
-            levels={9}
-            intensity={1.5}
+            levels={isLowPower || isMobile ? 3 : 6}
+            intensity={isLowPower || isMobile ? 0.7 : 1.1}
             luminanceThreshold={1}
             luminanceSmoothing={1}
           />
-          {texture && <LUT lut={texture} />}
+          {(!isLowPower) && texture && <LUT lut={texture} />}
         </EffectComposer>
       </Canvas>
     </div>
   );
 }
 
-function Scene() {
+function Scene({ isLowPower = false }) {
   const [isPrismHit, hitPrism] = useState(false);
   const flare = useRef(null);
   const ambient = useRef(null);
@@ -73,8 +86,8 @@ function Scene() {
     e.stopPropagation();
     hitPrism(true);
     // Set the intensity really high on first contact
-    rainbow.current.material.speed = 1;
-    rainbow.current.material.emissiveIntensity = 20;
+    rainbow.current.material.speed = isLowPower ? 0.6 : 1;
+    rainbow.current.material.emissiveIntensity = isLowPower ? 6 : 16;
   }, []);
 
   const vec = new THREE.Vector3();
@@ -118,7 +131,7 @@ function Scene() {
     lerp(
       rainbow.current.material,
       "emissiveIntensity",
-      isPrismHit ? 2.5 : 0,
+      isPrismHit ? (isLowPower ? 1.6 : 2.5) : 0,
       0.1
     );
     spot.current.intensity = rainbow.current.material.emissiveIntensity;
@@ -156,7 +169,7 @@ function Scene() {
       </Center>
       {/* Prism + blocks + reflect beam */}
 
-      <Beam ref={boxreflect} bounce={10} far={30}>
+      <Beam ref={boxreflect} bounce={10} far={30} instanceCount={isLowPower ? 60 : 100}>
         <Prism
           position={[0, -0.5, 0]}
           onRayOver={rayOver}
@@ -175,8 +188,9 @@ function Scene() {
         ref={flare}
         visible={isPrismHit}
         renderOrder={10}
-        scale={1}
-        streak={[12.5, 20, 5]}
+        scale={isLowPower ? 0.9 : 1}
+        streak={isLowPower ? [10, 16, 4] : [12.5, 20, 5]}
+        lowPower={isLowPower}
       />
     </>
   );
