@@ -1,135 +1,124 @@
-'use client';
+﻿'use client'
+import { useRef, useState } from 'react'
+import { useScrambleOnView } from '../hooks/useScrambleOnView'
+import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
+import { useScrambleOnHover } from '../hooks/useScrambleOnHover'
+import { useBarWipe } from '../hooks/useBarWipe'
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+const LINKS = [
+  { href: 'https://github.com/therealgone', label: 'GitHub', meta: 'therealgone ↗', external: true },
+  { href: 'https://www.linkedin.com/in/jeevan-baabu-murugan-ba3667426/', label: 'LinkedIn', meta: 'jeevan-baabu ↗', external: true },
+  { href: 'mailto:jeevanbaabu03@gmail.com', label: 'Email', meta: 'jeevanbaabu03@gmail.com ↗', external: false },
+  { href: '/resume.pdf', label: 'Résumé', meta: 'PDF ↓', external: true },
+]
 
-type nav = {
-  active: string;
-}
 export default function Contact() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [notification, setNotification] = useState<string | false>(false);
+  const h2Ref = useRef<HTMLHeadingElement>(null)
+  const scrambleTargetRef = useRef<HTMLSpanElement>(null)
+  useRevealOnScroll(h2Ref)
+  useScrambleOnView(scrambleTargetRef, 'Say hello')
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+  const [sent, setSent] = useState(false)
 
-
-
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-
-  };
-  const namesent = formData.name
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const res = await fetch("https://formspree.io/f/xeokobav", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
-    if (res.ok) {
-
-      setNotification(namesent);
-
-
-
-      setTimeout(() => setNotification(false), 5000);
-
-      setFormData({ name: "", email: "", message: "" });
-    } else {
-      alert("Failed to send message.");
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    try {
+      const res = await fetch('https://formspree.io/f/xeokobav', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message }),
+      })
+      if (res.ok) {
+        setSent(true)
+        setName(''); setEmail(''); setMessage('')
+        setTimeout(() => setSent(false), 5000)
+      }
+    } catch {
+      // offline preview — swallow, matches source's empty catch
     }
-  };
+  }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 md:px-8 lg:px-16 py-10 md:py-20">
-      {notification && (
-        <motion.div
-          initial={{ opacity: 0, y: -90 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+    <section id="contact" style={{ position: 'relative', zIndex: 5, background: '#000', padding: '20px 24px 0' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 20, marginBottom: 56 }}>
+          <span style={{ fontSize: 11, letterSpacing: '.24em', textTransform: 'uppercase', color: '#6f879c' }}>05 / Contact</span>
+          <span style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.12)' }} />
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 48, alignItems: 'start' }}>
+          <div>
+            <h2 ref={h2Ref} style={{ fontFamily: "'Instrument Serif', serif", fontStyle: 'italic', fontWeight: 400, fontSize: 'clamp(38px, 6vw, 84px)', lineHeight: 0.9, letterSpacing: '-0.025em', margin: '0 0 20px', maxWidth: '16ch' }}>
+              <span ref={scrambleTargetRef}>Say hello</span>, or send me something hard.
+            </h2>
+            <p style={{ margin: '0 0 28px', fontWeight: 300, fontSize: 17, lineHeight: 1.55, color: 'rgba(255,255,255,0.55)', maxWidth: '40ch' }}>
+              B.Tech complete — open to full-stack, AI/ML and cloud engineering roles. Reachable in Chennai and Abu Dhabi — I read everything that lands here.
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 2, maxWidth: 420 }}>
+              {LINKS.map((l) => <ContactLink key={l.label} {...l} />)}
+              <div style={{ display: 'flex', justifyContent: 'space-between', gap: 16, padding: '18px 4px', fontSize: 13, color: 'rgba(255,255,255,0.35)' }}>
+                <span>Chennai, India</span><span>Abu Dhabi, UAE</span>
+              </div>
+            </div>
+          </div>
 
+          <form onSubmit={submit} className="glass" style={{ borderRadius: 24, padding: 28, background: 'rgba(255,255,255,0.02)', boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.12)', display: 'flex', flexDirection: 'column', gap: 14 }}>
+            <span style={{ fontSize: 11, letterSpacing: '.22em', textTransform: 'uppercase', color: '#6f879c' }}>Send a message</span>
+            <input
+              type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Your name" required
+              onFocus={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.45)'; e.currentTarget.style.background = 'rgba(255,255,255,0.07)' }}
+              onBlur={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.background = 'rgba(255,255,255,0.04)' }}
+              style={{ width: '100%', boxSizing: 'border-box', padding: '15px 16px', borderRadius: 16, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', fontSize: 15, outline: 'none' }}
+            />
+            <input
+              type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Your email" required
+              onFocus={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.45)'; e.currentTarget.style.background = 'rgba(255,255,255,0.07)' }}
+              onBlur={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.background = 'rgba(255,255,255,0.04)' }}
+              style={{ width: '100%', boxSizing: 'border-box', padding: '15px 16px', borderRadius: 16, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', fontSize: 15, outline: 'none' }}
+            />
+            <textarea
+              name="message" value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Your message" required
+              onFocus={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.45)'; e.currentTarget.style.background = 'rgba(255,255,255,0.07)' }}
+              onBlur={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.background = 'rgba(255,255,255,0.04)' }}
+              style={{ width: '100%', boxSizing: 'border-box', height: 150, resize: 'none', padding: '15px 16px', borderRadius: 16, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', fontSize: 15, lineHeight: 1.5, outline: 'none' }}
+            />
+            <button
+              type="submit"
+              onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.88)' }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = '#fff' }}
+              style={{ marginTop: 4, width: '100%', border: 'none', borderRadius: 999, padding: '15px 20px', background: '#fff', color: '#000', fontSize: 14, fontWeight: 500, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, cursor: 'pointer' }}
+            >
+              {sent ? 'Message sent — thank you' : 'Send message'} <span style={{ fontSize: 13 }}>↗</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  )
+}
 
-          className="fixed bottom-5 right-5 w-[280px] md:w-[330px] rounded-xl bg-white/50 backdrop-blur-md p-3 md:p-4 animate-slide-up-fade z-50 text-black">
-          <div className="text-xs md:text-sm font-semibold mb-1 border-b border-white/30 pb-1">✔️ Message Sent</div>
-          <div className="text-xs">Thank you, {notification} , for reaching out.</div>
-          <div className="text-xs">We'll get back to you very soon.</div>
-        </motion.div>
+function ContactLink({ href, label, meta, external }: { href: string; label: string; meta: string; external: boolean }) {
+  const rowRef = useRef<HTMLAnchorElement>(null)
+  const barRef = useRef<HTMLSpanElement>(null)
+  const textRef = useRef<HTMLSpanElement>(null)
+  useBarWipe(rowRef, barRef)
+  useScrambleOnHover(rowRef, textRef, label)
 
-      )}
-
-      <motion.h1
-        className="text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-6 md:mb-10 text-center"
-        initial={{ opacity: 0, y: 90 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
-        viewport={{ once: true }}
-      >
-        Contact
-      </motion.h1>
-      <motion.form
-        initial={{ opacity: 0, y: 100 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        onSubmit={handleSubmit}
-        className="w-full max-w-[700px] font-mono tracking-wide p-4 md:p-6 lg:p-10 rounded-2xl md:rounded-3xl shadow-xl flex flex-col gap-4 md:gap-6"
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 90 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          viewport={{ once: true }}
-        >
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Your Name"
-            required
-            className="w-full p-3 md:p-4 rounded-lg md:rounded-xl bg-zinc-950 text-white placeholder-zinc-400 border border-zinc-700/30 focus:border-zinc-500 focus:drop-shadow-[0_0_4px_white] focus:ring-2 focus:ring-zinc-500/30 outline-none transition mb-2 text-sm md:text-base"
-          />
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 90 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          viewport={{ once: true }}
-        >
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Your Email"
-            required
-            className="w-full p-3 md:p-4 rounded-lg md:rounded-xl bg-zinc-950 text-white placeholder-zinc-400 border border-zinc-700/30 focus:border-zinc-500 focus:ring-2 focus:drop-shadow-[0_0_4px_white] focus:ring-zinc-500/30 outline-none transition mb-2 text-sm md:text-base"
-          />
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 90 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          viewport={{ once: true }}
-        >
-          <textarea
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            placeholder="Your Message"
-            required
-            className="w-full p-3 md:p-4 h-32 md:h-48 rounded-lg md:rounded-xl bg-zinc-950 text-white placeholder-zinc-400 border border-zinc-700/30 focus:border-zinc-500 focus:ring-2 focus:drop-shadow-[0_0_4px_white] focus:ring-zinc-500/30 outline-none transition mb-2 resize-none text-sm md:text-base"
-          />
-        </motion.div>
-        <motion.button
-          type="submit"
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.97 }}
-          className="w-full animate-rotate-border rounded-2xl md:rounded-3xl bg-conic/[from_var(--border-angle)] from-white via-zinc-800 to-white text-white font-bold p-px shadow-lg hover:shadow-white/20 transition-all duration-300 text-base md:text-lg tracking-wide mt-2"
-        >
-          <h1 className="backdrop-blur-3xl rounded-2xl md:rounded-3xl bg-zinc-950 py-2 md:py-3 w-full text-sm md:text-base">Send Message</h1>
-        </motion.button>
-      </motion.form>
-    </div>
-  );
+  return (
+    <a
+      ref={rowRef}
+      href={href}
+      target={external ? '_blank' : undefined}
+      rel={external ? 'noopener noreferrer' : undefined}
+      onMouseEnter={(e) => { e.currentTarget.style.color = '#fff' }}
+      onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,0.62)' }}
+      style={{ position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 4px', borderBottom: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.62)' }}
+    >
+      <span ref={barRef} style={{ position: 'absolute', left: 0, top: 0, height: 1, width: '0%', background: '#fff' }} />
+      <span ref={textRef} style={{ fontSize: 20 }}>{label}</span>
+      <span style={{ fontSize: 13, color: '#6f879c' }}>{meta}</span>
+    </a>
+  )
 }
