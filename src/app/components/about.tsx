@@ -63,7 +63,7 @@ export default function About() {
       if (nearest !== chapterIndexRef.current) {
         chapterIndexRef.current = nearest
         if (countRef.current) scramble(countRef.current, ('0' + (nearest + 1)).slice(-2), 340)
-        if (labelRef.current) scramble(labelRef.current, TICK_LABELS[nearest], 420)
+        if (labelRef.current) scramble(labelRef.current, CHAPTERS[nearest].title, 420)
         tickRefs.current.forEach((btn, i) => {
           if (!btn) return
           const on = i === nearest
