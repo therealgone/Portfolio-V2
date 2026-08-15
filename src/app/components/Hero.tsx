@@ -6,7 +6,7 @@ const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v))
 
 export default function Hero() {
   const { subscribe } = useScrollEngine()
-  const wrapRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
   const cueRef = useRef<HTMLDivElement>(null)
@@ -41,12 +41,12 @@ export default function Hero() {
 
   useEffect(() => {
     return subscribe(() => {
-      const wrap = wrapRef.current
+      const wrap = sectionRef.current
       const content = contentRef.current
       if (!wrap || !content) return
       const vh = window.innerHeight
       const total = wrap.offsetHeight - vh
-      const p = clamp(-wrap.getBoundingClientRect().top / total, 0, 1)
+      const p = total > 0 ? clamp(-wrap.getBoundingClientRect().top / total, 0, 1) : 0
       content.style.transform = `translateY(${-p * 90}px) scale(${1 - p * 0.08})`
       content.style.opacity = String(clamp(1 - p * 1.5, 0, 1))
       content.style.filter = `blur(${p * 5}px)`
@@ -56,8 +56,8 @@ export default function Hero() {
   }, [subscribe])
 
   return (
-    <section id="home" style={{ position: 'relative', height: '240vh' }}>
-      <div ref={wrapRef} style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden' }}>
+    <section ref={sectionRef} id="home" style={{ position: 'relative', height: '240vh' }}>
+      <div style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden' }}>
         <video
           ref={videoRef}
           autoPlay
