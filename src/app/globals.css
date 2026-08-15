@@ -1,59 +1,35 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lexend+Tera:wght@400;500;600&display=swap");
 @import "tailwindcss";
 
-:root {
-  background-color: black;
-}
+html { background: #000; }
+body { margin: 0; background: #000; color: #fff; font-family: 'Barlow', sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: #fff; text-decoration: none; }
+a:hover { color: rgba(255,255,255,0.6); }
+::selection { background: #fbe1d1; color: #17191c; }
+input, textarea, button { font-family: 'Barlow', sans-serif; }
 
 html {
   scroll-behavior: smooth;
   scrollbar-width: none;
 }
+body::-webkit-scrollbar { display: none; }
 
-* {
-  cursor: none;
+@media (min-width: 900px) { * { cursor: none !important; } }
+
+@media (max-width: 780px) {
+  [data-track-wrap]  { height: 300vh !important; }
+  [data-chapter]     { width: 86vw !important; padding: 30px 24px !important; }
+  [data-index-wrap]  { height: auto !important; margin-top: 20px !important; }
+  [data-index-sticky]{ position: static !important; height: auto !important;
+                       overflow: visible !important; display: block !important; }
+  [data-index-grid]  { display: flex !important; flex-direction: column-reverse !important; gap: 24px !important; }
+  [data-index-preview]{ position: sticky !important; top: 64px; z-index: 3; background: #000; padding-bottom: 8px; }
+  [data-grid3]       { grid-template-columns: 1fr !important; gap: 12px !important; }
+  [data-bubble]      { width: 96px !important; height: 96px !important; }
 }
 
-/* Mobile-specific cursor behavior */
-@media (max-width: 768px) {
-  * {
-    cursor: auto;
-  }
+@keyframes om-cue { 0%,100% { transform: translateY(0); opacity: .35 } 50% { transform: translateY(6px); opacity: .9 } }
 
-  /* Improve touch interactions on mobile */
-  button,
-  a,
-  input,
-  textarea {
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-  }
-
-  /* Smooth scrolling for mobile */
-  html {
-    -webkit-overflow-scrolling: touch;
-  }
-}
-
-/* Performance optimizations */
-* {
-  box-sizing: border-box;
-}
-
-/* Optimize animations for better performance */
-.animate-rotate-border,
-.gpu-boost {
-  will-change: transform;
-  backface-visibility: hidden;
-  transform: translateZ(0);
-}
-
-/* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
-  .animate-rotate-border {
-    animation: none;
-  }
-
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
@@ -61,35 +37,41 @@ html {
   }
 }
 
-.font-inter {
-  font-family: "Inter", sans-serif;
+.glass {
+  background: rgba(255,255,255,0.01);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  box-shadow: 4px 4px 4px rgba(0,0,0,0.05), inset 0 1px 1px rgba(255,255,255,0.15);
+  position: relative;
+  overflow: hidden;
 }
-.font-lexend {
-  font-family: "Lexend Tera", sans-serif;
-}
-
-/* Fallback for browsers that don't support @property */
-
-/* Fallback animation for browsers without @property support */
-
-/* Rotating border animation */
-@keyframes border-rotate {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-rotate-border {
-  background: conic-gradient(from 0deg, white, #52525b, white);
-}
-
-/* Hide scrollbar for Chrome, Safari and Opera */
-body::-webkit-scrollbar {
-  display: none;
+.glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.5) 0%,  rgba(255,255,255,0.2) 20%,
+    rgba(255,255,255,0)  40%,  rgba(255,255,255,0)  60%,
+    rgba(255,255,255,0.2) 80%, rgba(255,255,255,0.5) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  pointer-events: none;
 }
 
-/* Inside your styles/globals.css */
-.gpu-boost {
-  transform: translateZ(0);
-  will-change: transform, opacity;
+/* nav overlay panel (line 54) has different gradient stops */
+.glass-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.5) 0%,  rgba(255,255,255,0.15) 30%,
+    rgba(255,255,255,0) 50%,  rgba(255,255,255,0.15) 70%,
+    rgba(255,255,255,0.5) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  pointer-events: none;
 }
