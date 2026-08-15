@@ -1,0 +1,135 @@
+{
+    "glyphs": {
+
+"J": {
+        "ha": 792,
+        "x_min": 0,
+        "x_max": 0,
+        "o": "m 703 1010 l 703 306 b 359 -14 703 110 563 -14 b 33 284 176 -14 32 82 l 245 284 b 369 157 247 204 295 157 b 492 306 448 157 492 209 l 492 1010 "
+      },
+ "e": {
+        "ha": 830,
+        "x_min": 0,
+        "x_max": 0,
+        "o": "m 429 -15 b 53 375 196 -15 53 135 b 421 767 53 609 198 767 b 777 383 621 767 777 640 l 777 325 l 261 325 l 261 325 b 433 142 261 212 327 142 b 578 230 503 142 557 172 l 772 217 b 429 -15 743 76 617 -15 m 579 455 b 424 611 579 545 515 611 b 261 455 331 611 265 542 "
+      },
+"v": {
+        "ha": 814,
+        "x_min": 0,
+        "x_max": 0,
+        "o": "m 525 0 l 289 0 l 24 758 l 246 758 l 403 216 l 411 216 l 568 758 l 790 758 "
+      },
+ "a": {
+        "ha": 806,
+        "x_min": 0,
+        "x_max": 0,
+        "o": "m 300 -14 b 48 212 155 -14 48 62 b 333 445 48 381 183 431 b 516 513 465 458 516 464 l 516 516 b 404 614 516 578 475 614 b 269 527 328 614 284 577 l 75 543 b 405 767 104 681 223 767 b 727 511 574 767 727 691 l 727 0 l 527 0 l 527 105 l 521 105 b 300 -14 484 35 412 -14 m 360 131 b 518 271 452 131 518 191 l 518 351 b 372 317 493 334 418 324 b 249 218 298 307 249 278 b 360 131 249 161 295 131 "
+      },
+"n": {
+        "ha": 864,
+        "x_min": 0,
+        "x_max": 0,
+        "o": "m 294 0 l 84 0 l 84 758 l 284 758 l 284 624 l 293 624 b 521 767 327 712 408 767 b 782 482 679 767 782 659 l 782 0 l 572 0 l 572 445 b 437 593 573 538 522 593 b 294 438 353 593 294 536 "
+      },
+  "B": {
+        "ha": 918,
+        "x_min": 0,
+        "x_max": 0,
+        "o": "m 88 1010 l 492 1010 b 828 751 715 1010 828 903 b 645 534 828 632 750 558 l 645 524 b 867 279 760 519 867 429 b 519 0 867 118 746 0 l 88 0 m 475 175 b 647 300 595 175 647 224 b 480 443 647 384 583 443 l 301 443 l 301 175 m 460 587 b 612 716 547 587 612 636 b 464 837 612 789 558 837 l 301 837 l 301 587 "
+      },
+ "b": {
+        "ha": 882,
+        "x_min": 0,
+        "x_max": 0,
+        "o": "m 88 1010 l 298 1010 l 298 630 l 304 630 b 520 767 332 692 393 767 b 827 378 686 767 827 638 b 519 -12 827 124 692 -12 b 304 121 397 -12 333 58 l 295 121 l 295 0 l 88 0 m 293 379 b 453 155 293 244 352 155 b 612 379 556 155 612 247 b 453 600 612 510 557 600 b 293 379 351 600 293 514 "
+      },
+ "u": {
+        "ha": 864,
+        "x_min": 0,
+        "x_max": 0,
+        "o": "m 570 758 l 780 758 l 780 0 l 578 0 l 578 138 l 570 138 b 340 -10 536 49 454 -10 b 84 275 188 -10 84 98 l 84 758 l 294 758 l 294 313 b 425 168 294 223 346 168 b 570 323 501 168 570 221 "
+      },
+ "M" : {
+        "ha": 1271,
+        "x_min": 0,
+        "x_max": 0,
+        "o": "m 351 1010 l 629 331 l 641 331 l 919 1010 l 1183 1010 l 1183 0 l 976 0 l 976 657 l 967 657 l 706 5 l 565 5 l 303 660 l 295 660 l 295 0 l 88 0 l 88 1010 "
+      },
+   "u": {
+        "ha": 864,
+        "x_min": 0,
+        "x_max": 0,
+        "o": "m 570 758 l 780 758 l 780 0 l 578 0 l 578 138 l 570 138 b 340 -10 536 49 454 -10 b 84 275 188 -10 84 98 l 84 758 l 294 758 l 294 313 b 425 168 294 223 346 168 b 570 323 501 168 570 221 "
+      },
+   "r": {
+        "ha": 568,
+        "x_min": 0,
+        "x_max": 0,
+        "o": "m 84 758 l 288 758 l 288 625 l 295 625 b 477 768 323 719 393 768 b 544 761 499 768 525 765 l 544 575 b 455 586 524 581 484 586 b 294 429 362 586 294 522 l 294 0 l 84 0 "
+      },
+  "g": {
+        "ha": 879,
+        "x_min": 0,
+        "x_max": 0,
+        "o": "m 425 -300 b 79 -89 221 -300 104 -208 l 273 -63 b 430 -149 291 -109 337 -149 b 588 -4 521 -149 588 -109 l 588 134 l 579 134 b 363 11 551 72 484 11 b 56 380 192 11 56 128 b 363 767 56 638 196 767 b 579 630 489 767 551 692 l 587 630 l 587 758 l 796 758 l 796 -7 b 425 -300 796 -201 642 -300 m 430 169 b 589 381 531 169 589 248 b 430 600 589 514 532 600 b 270 381 326 600 270 510 b 430 169 270 251 327 169 "
+      },
+ " ": { "ha": 322, "x_min": 0, "x_max": 0, "o": "" },
+      " ": { "ha": 322, "x_min": 0, "x_max": 0, "o": "" },
+      " ": { "ha": 215, "x_min": 0, "x_max": 0, "o": "" },
+      " ": { "ha": 412, "x_min": 0, "x_max": 0, "o": "" },
+      " ": { "ha": 793, "x_min": 0, "x_max": 0, "o": "" },
+      " ": { "ha": 1573, "x_min": 0, "x_max": 0, "o": "" },
+      " ": { "ha": 694, "x_min": 0, "x_max": 0, "o": "" },
+      " ": { "ha": 1389, "x_min": 0, "x_max": 0, "o": "" },
+      " ": { "ha": 464, "x_min": 0, "x_max": 0, "o": "" },
+      " ": { "ha": 347, "x_min": 0, "x_max": 0, "o": "" },
+      " ": { "ha": 231, "x_min": 0, "x_max": 0, "o": "" },
+      " ": { "ha": 947, "x_min": 0, "x_max": 0, "o": "" },
+      " ": { "ha": 413, "x_min": 0, "x_max": 0, "o": "" },
+      " ": { "ha": 215, "x_min": 0, "x_max": 0, "o": "" },
+      " ": { "ha": 108, "x_min": 0, "x_max": 0, "o": "" },
+      "​": { "ha": 0, "x_min": 0, "x_max": 0, "o": "" }
+
+ },
+    "familyName": "Inter",
+    "ascender": 1345,
+    "descender": -335,
+    "underlinePosition": -215,
+    "underlineThickness": 133,
+    "boundingBox": { "yMin": -444, "xMin": -1174, "yMax": 1546, "xMax": 3588 },
+    "resolution": 1000,
+    "original_font_information": {
+      "format": 0,
+      "copyright": "Copyright © 2020 The Inter Project Authors",
+      "fontFamily": "Inter",
+      "fontSubfamily": "Bold",
+      "uniqueID": "Inter-Bold:2021:0a5106e0b",
+      "fullName": "Inter Bold",
+      "version": "Version 3.019;git-0a5106e0b",
+      "postScriptName": "Inter-Bold",
+      "trademark": "Inter UI and Inter is a trademark of rsms.",
+      "manufacturer": "rsms",
+      "designer": "Rasmus Andersson",
+      "manufacturerURL": "https://rsms.me/",
+      "designerURL": "https://rsms.me/",
+      "licence": "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL",
+      "licenceURL": "http://scripts.sil.org/OFL",
+      "unknown1": "Open digits",
+      "unknown2": "Disambiguation",
+      "unknown3": "r curves into round neighbors",
+      "unknown4": "Disambiguation without slashed zero",
+      "unknown5": "Alternate one",
+      "unknown6": "Open four",
+      "unknown7": "Open six",
+      "unknown8": "Open nine",
+      "unknown9": "Lower-case L with tail",
+      "unknown10": "r with curved tail",
+      "unknown11": "Alternate German double s",
+      "unknown12": "Upper-case i with serif",
+      "unknown13": "Flat-top three",
+      "unknown14": "Captital G with spur",
+      "unknown15": "Single-storey a"
+    },
+    "cssFontWeight": "bold",
+    "cssFontStyle": "normal"
+  }

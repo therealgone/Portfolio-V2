@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lexend+Tera:wght@400;500;600&display=swap");
+@import "tailwindcss";
+
+:root {
+  background-color: black;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+* {
+  cursor: none;
+}
+
+/* Mobile-specific cursor behavior */
+@media (max-width: 768px) {
+  * {
+    cursor: auto;
+  }
+
+  /* Improve touch interactions on mobile */
+  button,
+  a,
+  input,
+  textarea {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  /* Smooth scrolling for mobile */
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
+/* Optimize animations for better performance */
+.animate-rotate-border,
+.gpu-boost {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .animate-rotate-border {
+    animation: none;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.font-inter {
+  font-family: "Inter", sans-serif;
+}
+.font-lexend {
+  font-family: "Lexend Tera", sans-serif;
+}
+
+/* Fallback for browsers that don't support @property */
+
+/* Fallback animation for browsers without @property support */
+
+/* Rotating border animation */
+@keyframes border-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-rotate-border {
+  background: conic-gradient(from 0deg, white, #52525b, white);
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Inside your styles/globals.css */
+.gpu-boost {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
